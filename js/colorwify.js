@@ -10,9 +10,11 @@ const colorPaletteDiv = document.querySelector(".color_palette");
 const uploadInput = document.querySelector(".upload_input");
 const defaultSidebarContent = document.querySelector(".default");
 const rightSidebar = document.querySelector(".right_sidebar");
+const leftSidebar = document.querySelector(".left_sidebar");
+
 // const rangeSlider = document.querySelector(".range_slider");
 const imageLoaded = document.querySelector(".image_loaded");
-let count = 10;
+let count = 20;
 const exportButton = document.querySelector(".export_palette");
 const cssCode = document.querySelector(".css_code");
 const copyCssButton = document.querySelector(".copy_css_button");
@@ -20,31 +22,49 @@ const downloadCssCodeButton = document.querySelector(".download_css_button");
 const popUp = document.querySelector(".popup");
 const exportPalette = document.querySelector(".export_palette");
 const closePopUpButton = document.querySelector(".fa-times-circle");
+const cssResult = document.querySelector(".css_result");
+const exportAsCssButton = document.querySelector(".export_as_css");
+const defaultPopUpRightContent = document.querySelector(
+  ".default_popup_right_content"
+);
+exportAsImageButton = document.querySelector(".export_as_image");
+const imageResult = document.querySelector(".image_result");
+const savePaletteButton = document.querySelector(".save_palette");
+
+exportAsCssButton.addEventListener("click", () => {
+  cssResult.style.display = "block";
+  imageResult.style.display = "none";
+  defaultPopUpRightContent.style.display = "none";
+  exportAsCssButton.style.backgroundColor = "red";
+  exportAsCssButton.style.color = "#fff";
+  exportAsImageButton.style.backgroundColor = "transparent";
+  exportAsImageButton.style.color = "#000";
+});
+exportAsImageButton.addEventListener("click", () => {
+  imageResult.style.display = "block";
+  cssResult.style.display = "none";
+  defaultPopUpRightContent.style.display = "none";
+  exportAsImageButton.style.backgroundColor = "red";
+  exportAsImageButton.style.color = "#fff";
+  exportAsCssButton.style.backgroundColor = "transparent";
+  exportAsCssButton.style.color = "#000";
+});
 
 closePopUpButton.addEventListener("click", () => {
   popUp.classList.remove("active");
+  leftSidebar.style.pointerEvents = "auto";
+  // rightSidebar.style.pointerEvents = "auto";
+  mainBg.style.pointerEvents = "auto";
 });
+
+/***************Show export poppup***************/
 exportButton.addEventListener("click", () => {
-  // popUp.style.display = "block";
   popUp.classList.add("active");
+  // rightSidebar.style.pointerEvents = "none";
+  mainBg.style.pointerEvents = "none";
+  leftSidebar.style.pointerEvents = "none";
 });
-
-if (popUp.classList.contains("active")) {
-  console.log("popup is active");
-}
-//disable interaction with the rest of the page while pop up is open
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("popup")) {
-    e.stopPropagation();
-  }
-});
-
-// rangeSlider.addEventListener("input", (e) => {
-//   count = e.target.value;
-// });
-
-// console.log(rangeSlider);
-// const newPaletteButton = document.querySelector(".new_palette");
+/*************************************************/
 
 const loadFile = function (e) {
   const uploadedImage = document.querySelector(".uploaded_image");
@@ -53,7 +73,6 @@ const loadFile = function (e) {
 
   uploadedImage.onload = function () {
     URL.revokeObjectURL(uploadedImage.src);
-
     /**************************Get Dominant Color************************/
     (function getDominantColor() {
       const dominantColor = colorThief.getColor(uploadedImage);
@@ -105,7 +124,7 @@ const loadFile = function (e) {
       });
     })();
     /*****************************************************************/
-
+    //***********Save Palette Data to localstorage******/
     /*******************Generate Color Palette************************/
     (function getColorPalette() {
       const colorPalette = colorThief.getPalette(image, count);
@@ -124,7 +143,10 @@ const loadFile = function (e) {
         const singleColor = document.createElement("div");
         singleColor.classList.add("color");
         singleColor.style.backgroundColor = `rgb(${r},${g},${b})`;
+        // colorPaletteDiv.appendChild(singleColor);
+        //remove current color palette before adding new one
         colorPaletteDiv.appendChild(singleColor);
+
         const colorPaletteCodeAndCopyButton = document.createElement("div");
         colorPaletteCodeAndCopyButton.classList.add(
           "color_palette_code_and_copy_button"
@@ -199,8 +221,6 @@ const loadFile = function (e) {
         },
       ];
 
-      console.log(singleColorValues);
-
       const cssOutput = `
       /* Generated with ❤️ by Colorwify */
 
@@ -254,7 +274,6 @@ const loadFile = function (e) {
       };
     `;
       cssCode.textContent = cssOutput;
-      console.log(cssOutput);
       //copy css code to clipboard
       function copyCssCode() {
         cssCode.select();
@@ -291,6 +310,112 @@ const loadFile = function (e) {
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
+      });
+      const svgImage = `
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1034.9">
+  <defs>
+    <style>
+      .cls-1, .cls-9 {
+        fill: #f6f6f6;
+      }
+
+      .cls-2 {
+        font-size: 67.82px;
+      }
+
+      .cls-2, .cls-9 {
+        font-family: Poppins-Medium, Poppins;
+        font-weight: 500;
+      }
+
+      .cls-3 {
+        fill: red;
+      }
+
+      .cls-4 {
+        fill: ${colorHexValues[0]};
+      }
+
+      .cls-5 {
+        fill: ${colorHexValues[1]};
+      }
+
+      .cls-6 {
+        fill: ${colorHexValues[2]};
+      }
+
+      .cls-7 {
+        fill: ${colorHexValues[4]};
+      }
+
+      .cls-8 {
+        fill: ${colorHexValues[3]};
+      }
+
+      .cls-9 {
+        font-size: 52.2px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" y="924" width="1024" height="100"/>
+  <g>
+    <text class="cls-2" transform="translate(24.3 995.43)">Colorwify</text>
+    <circle class="cls-3" cx="354.7" cy="951.1" r="8.06"/>
+    <circle class="cls-3" cx="273.45" cy="947.47" r="5.21"/>
+  </g>
+  <rect class="cls-4" width="204.8" height="924"/>
+  <rect class="cls-5" x="204.8" width="204.8" height="924"/>
+  <rect class="cls-6" x="409.6" width="204.8" height="924"/>
+  <rect class="cls-7" x="819.2" width="204.8" height="924"/>
+  <rect class="cls-8" x="614.4" width="204.8" height="924"/>
+  <text class="cls-9" transform="translate(121.79 899.05) rotate(-90)">${colorNames[0]}</text>
+  <text class="cls-9" transform="translate(327.41 895.45) rotate(-90)">${colorNames[1]}</text>
+  <text class="cls-9" transform="translate(512 891.85) rotate(-90)">${colorNames[2]}</text>
+  <text class="cls-9" transform="translate(730.6 891.01) rotate(-90)">${colorNames[3]}</text>
+  <text class="cls-9" transform="translate(933.81 888.61) rotate(-90)">${colorNames[4]}</text>
+</svg>
+<button class="download_svg_button onClick=downloadSvgImage()><i class="fad fa-download"></i></button>
+</div>
+        `;
+
+      imageResult.innerHTML = svgImage;
+      //download svg image as a file
+      function downloadSvgImage() {
+        const element = document.createElement("a");
+        element.setAttribute(
+          "href",
+          "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgImage)
+        );
+        element.setAttribute(
+          "download",
+          `${colorNames[0].replace(/\s/g, "")}Palette.svg`
+        );
+        element.style.display = "none";
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+      }
+      //push color name and hex code to palette object
+      const palette = {
+        colorNames: colorNames,
+        colorHexValues: colorHexValues,
+      };
+      function savePalette() {
+        //use palette object to save palette data array
+        const paletteData = JSON.parse(localStorage.getItem("paletteData"));
+        if (paletteData === null) {
+          const paletteData = [];
+          paletteData.push(palette);
+          localStorage.setItem("paletteData", JSON.stringify(paletteData));
+        } else {
+          paletteData.push(palette);
+          localStorage.setItem("paletteData", JSON.stringify(paletteData));
+        }
+        savePaletteButton.innerHTML = `<i class="fad fa-check"></i> Saved`;
+        savePaletteButton.style.backgroundColor = "grey";
+      }
+      savePaletteButton.addEventListener("click", savePalette, {
+        once: true,
       });
     })();
     /***********************************************************************/
