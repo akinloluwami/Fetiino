@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 100vh;
+  height: fit-content;
   position: relative;
   .left_sidebar {
     width: 20%;
@@ -13,9 +13,9 @@
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
+    position: fixed;
+    z-index: 1;
+    top: 0;
     left: 0;
     top: 0;
     .logo {
@@ -121,19 +121,47 @@
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    h2 {
-      margin-top: 20px;
-      font-weight: 500;
-      font-size: 2rem;
+    .title_and_delete {
+      display: flex;
+      //   margin-top: 20px;
       text-align: left;
       width: 100%;
-      background-color: #fff;
+      justify-content: space-between;
+      background-color: #f6f5fb;
       position: sticky;
       top: 0;
       z-index: 2;
+      padding: 10px 0;
+      h2 {
+        font-weight: 500;
+        font-size: 2rem;
+        margin-left: 30px;
+      }
+      .delete_all {
+        margin-right: 30px;
+        background-color: red;
+        border: none;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        // width: 100px;
+        height: 35px;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        i {
+          margin-right: 5px;
+        }
+      }
     }
     .palette_default_content {
       display: none;
+      height: 90vh;
+      display: none;
+      align-items: center;
+      justify-self: center;
     }
 
     .saved_color_palettes_container {
@@ -177,7 +205,6 @@
           }
           .options_button {
             position: absolute;
-            position: absolute;
             bottom: 0;
             left: 50%;
             color: red;
@@ -194,12 +221,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 5px;
             transition: ease-in 0.5s;
-            &:hover {
-              width: 40px;
-              height: 40px;
-              transition: ease-in 0.5s;
+            // &:hover {
+            //   width: 40px;
+            //   height: 40px;
+            //   transition: ease-in 0.5s;
+            // }
+            .sharing_options {
+              display: flex;
+              // position: absolute;
+              // bottom: 40px;
+              background-color: #fff;
+              padding: 5px 10px;
+              border-radius: 7px;
+              display: none;
+              &.show {
+                display: flex;
+              }
+              button {
+                background-color: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: #000;
+                margin: 5px;
+              }
             }
           }
         }

@@ -113,7 +113,7 @@ const loadFile = function (e) {
       copyCopied.classList.add("copy_copied");
       dominantColorCodeAndButton.appendChild(copyCopied);
       const copyColorCodeButton = document.createElement("i");
-      copyColorCodeButton.classList.add("fad", "fa-clone");
+      copyColorCodeButton.classList.add("fa", "fa-clone");
       dominantColorCodeAndButton.appendChild(copyColorCodeButton);
       copyColorCodeButton.addEventListener("click", copyColorCode);
       copyColorCodeButton.addEventListener("mouseenter", () => {
@@ -176,7 +176,7 @@ const loadFile = function (e) {
         colorPaletteCodeAndCopyButton.appendChild(copyCopied);
 
         const copyColorCodeButton = document.createElement("i");
-        copyColorCodeButton.classList.add("fad", "fa-clone");
+        copyColorCodeButton.classList.add("fa", "fa-clone");
 
         colorPaletteCodeAndCopyButton.appendChild(copyColorCodeButton);
         singleColor.appendChild(colorPaletteCodeAndCopyButton);
@@ -374,7 +374,7 @@ const loadFile = function (e) {
   <text class="cls-9" transform="translate(730.6 891.01) rotate(-90)">${colorNames[3]}</text>
   <text class="cls-9" transform="translate(933.81 888.61) rotate(-90)">${colorNames[4]}</text>
 </svg>
-<button class="download_svg_button onClick=downloadSvgImage()><i class="fad fa-download"></i></button>
+<button class="download_svg_button onClick=downloadSvgImage()><i class="fa fa-download"></i></button>
 </div>
         `;
 
@@ -411,7 +411,7 @@ const loadFile = function (e) {
           paletteData.push(palette);
           localStorage.setItem("paletteData", JSON.stringify(paletteData));
         }
-        savePaletteButton.innerHTML = `<i class="fad fa-check"></i> Saved`;
+        savePaletteButton.innerHTML = `<i class="fa fa-check"></i> Saved`;
         savePaletteButton.style.backgroundColor = "grey";
       }
       savePaletteButton.addEventListener("click", savePalette, {
