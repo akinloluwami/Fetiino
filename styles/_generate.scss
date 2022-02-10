@@ -1,0 +1,139 @@
+.generate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  .left_sidebar {
+    width: 20%;
+    background-color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    top: 0;
+    .logo {
+      position: relative;
+      margin: 20px 0;
+      .dot {
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 100%;
+        position: absolute;
+        top: 2px;
+        right: -9px;
+      }
+    }
+    .links {
+      .navlinks {
+        list-style: none;
+        li {
+          margin: 20px 0;
+          small {
+            sup {
+              background-color: red;
+              color: #fff;
+              padding: 2px;
+              border-radius: 10px;
+            }
+          }
+          a {
+            text-decoration: none;
+            color: #000;
+            font-size: 0.9rem;
+            font-weight: 500;
+            i {
+              color: red;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+    .coming_soon {
+      background-color: #f6f9fe;
+      width: 70%;
+      //   margin-bottom: 100px;
+      height: 200px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      padding: 20px;
+      .emoji {
+        background-color: rgba(255, 0, 0, 0.288);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        img {
+          width: 50px;
+        }
+      }
+      p {
+        font-size: 0.8rem;
+        color: #000;
+        text-align: center;
+      }
+      button {
+        width: 80%;
+        height: 2rem;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        color: #fff;
+        background-color: red;
+      }
+    }
+
+    .contribute {
+      margin-bottom: 20px;
+      a {
+        text-decoration: none;
+        color: #000;
+        font-size: 0.8rem;
+        sup {
+          background-color: red;
+          color: #fff;
+          padding: 2px;
+          border-radius: 10px;
+          font-size: 0.5rem;
+        }
+      }
+    }
+  }
+  .main {
+    width: 80%;
+    margin-left: 20%;
+    background-color: #f6f5fb;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .palette {
+      height: 100%;
+      width: 100%;
+      background-color: red;
+      display: flex;
+      //make all the colors in the palette have the same width
+      .color {
+        width: 20%;
+        height: 100%;
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}

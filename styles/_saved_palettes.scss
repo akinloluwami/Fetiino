@@ -205,6 +205,7 @@
           }
           .options_button {
             position: absolute;
+            position: absolute;
             bottom: 0;
             left: 50%;
             color: red;
@@ -221,31 +222,45 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 5px;
+            padding: 15px;
             transition: ease-in 0.5s;
             // &:hover {
             //   width: 40px;
             //   height: 40px;
             //   transition: ease-in 0.5s;
             // }
-            .sharing_options {
+          }
+          .sharing_options {
+            position: absolute;
+            bottom: 40px;
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 7px;
+            display: none;
+            &.active {
               display: flex;
-              // position: absolute;
-              // bottom: 40px;
-              background-color: #fff;
-              padding: 5px 10px;
-              border-radius: 7px;
-              display: none;
-              &.show {
-                display: flex;
+            }
+            button {
+              background-color: rgba(255, 0, 0, 0.7);
+              width: 1rem;
+              height: 1rem;
+              padding: 1rem;
+              border-radius: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              color: #fff;
+              margin: 10px;
+              transition: ease 0.5s;
+              i {
+                font-size: 1rem;
               }
-              button {
-                background-color: transparent;
-                border: none;
-                outline: none;
-                cursor: pointer;
-                color: #000;
-                margin: 5px;
+              &:hover {
+                background-color: red;
+                transition: ease 0.5s;
               }
             }
           }

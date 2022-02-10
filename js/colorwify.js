@@ -20,7 +20,7 @@ const cssCode = document.querySelector(".css_code");
 const copyCssButton = document.querySelector(".copy_css_button");
 const downloadCssCodeButton = document.querySelector(".download_css_button");
 const popUp = document.querySelector(".popup");
-const exportPalette = document.querySelector(".export_palette");
+const exportPaletteButton = document.querySelector(".export_palette");
 const closePopUpButton = document.querySelector(".fa-times-circle");
 const cssResult = document.querySelector(".css_result");
 const exportAsCssButton = document.querySelector(".export_as_css");
@@ -30,6 +30,15 @@ const defaultPopUpRightContent = document.querySelector(
 exportAsImageButton = document.querySelector(".export_as_image");
 const imageResult = document.querySelector(".image_result");
 const savePaletteButton = document.querySelector(".save_palette");
+
+//disable default ctrl+s behaviour
+document.addEventListener("keydown", (e) => {
+  e.ctrlKey && e.key === "s" ? e.preventDefault() : null;
+});
+//disable default ctrl+e behaviour
+document.addEventListener("keydown", (e) => {
+  e.ctrlKey && e.key === "e" ? e.preventDefault() : null;
+});
 
 exportAsCssButton.addEventListener("click", () => {
   cssResult.style.display = "block";
@@ -56,15 +65,6 @@ closePopUpButton.addEventListener("click", () => {
   // rightSidebar.style.pointerEvents = "auto";
   mainBg.style.pointerEvents = "auto";
 });
-
-/***************Show export poppup***************/
-exportButton.addEventListener("click", () => {
-  popUp.classList.add("active");
-  // rightSidebar.style.pointerEvents = "none";
-  mainBg.style.pointerEvents = "none";
-  leftSidebar.style.pointerEvents = "none";
-});
-/*************************************************/
 
 const loadFile = function (e) {
   const uploadedImage = document.querySelector(".uploaded_image");
@@ -416,6 +416,27 @@ const loadFile = function (e) {
       }
       savePaletteButton.addEventListener("click", savePalette, {
         once: true,
+      });
+      function exportPalette() {
+        popUp.classList.add("active");
+        // rightSidebar.style.pointerEvents = "none";
+        mainBg.style.pointerEvents = "none";
+        leftSidebar.style.pointerEvents = "none";
+        /*************************************************/
+      }
+
+      exportPaletteButton.addEventListener("click", exportPalette);
+      //key bidings
+      document.addEventListener("keydown", (e) => {
+        e.ctrlKey ? (e.key === "s" ? savePalette() : null) : null;
+      });
+      document.addEventListener("keydown", (e) => {
+        e.ctrlKey ? (e.key === "e" ? exportPalette() : null) : null;
+        e.ctrlKey
+          ? e.key === "x"
+            ? popUp.classList.remove("active")
+            : null
+          : null;
       });
     })();
     /***********************************************************************/

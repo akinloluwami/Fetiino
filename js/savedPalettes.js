@@ -7,18 +7,25 @@ const paletteDefaultContent = document.querySelector(
   const paletteData = JSON.parse(localStorage.getItem("paletteData"));
   if (paletteData === null) {
     paletteDefaultContent.style.display = "flex";
-    console.log("no palettes saved");
   } else {
     paletteData.forEach((palette) => {
-      console.log(
-        palette.colorHexValues[0],
-        palette.colorHexValues[1],
-        palette.colorHexValues[2],
-        palette.colorHexValues[3],
-        palette.colorHexValues[4]
-      );
       const singlePaletteData = `
         <div class="saved_palette_card">
+
+        <div class="sharing_options">
+        <button class="share_palette_text">
+        <i class="fas fa-share-alt"></i>
+         </button>
+         <button class="share_palette_text">
+         <i class="fab fa-css3-alt"></i>
+         </button>
+         <button class="share_palette_text">
+         <i class="fas fa-file-image"></i>
+         </button>
+         <button class="share_palette_text">
+         <i class="fas fa-trash-alt"></i>
+         </button>
+        </div>
 
               <div class="colors">
                 <div class="color" style="background-color:${palette.colorHexValues[0]}"></div>
@@ -28,46 +35,37 @@ const paletteDefaultContent = document.querySelector(
                 <div class="color" style="background-color:${palette.colorHexValues[4]}"></div>
               </div>
               
-              <div class="options_button">
+              <button class="options_button">
                 <i class="fa fa-ellipsis-h"></i>
-                <div class="sharing_options">
-                  <button class="share_palette_text">
-                      <i class="fa fa-share"></i> 
-                   </button>
-                   <button class="share_palette_text">
-                      <i class="fa fa-share"></i> 
-                   </button>
-                   <button class="share_palette_text">
-                      <i class="fa fa-share"></i> 
-                   </button>
-                   <button class="share_palette_text">
-                      <i class="fa fa-share"></i> 
-                   </button>
-              </div>
-              </div>
+              </button>
             </div>
         `;
+
       savedColorPalettes.innerHTML += singlePaletteData;
 
-      // const optionsButton = document.querySelectorAll(".options_button i");
-
-      // optionsButton.forEach((button) => {
-      //   button.addEventListener("mouseover", (e) => {
-      //     const sharingOptions =
-      //       e.target.parentElement.parentElement.querySelector(
-      //         ".sharing_options"
-      //       );
-      //     sharingOptions.style.display = "flex";
-      //   });
-
-      //   button.addEventListener("mouseout", (e) => {
-      //     const sharingOptions =
-      //       e.target.parentElement.parentElement.querySelector(
-      //         ".sharing_options"
-      //       );
-      //     sharingOptions.style.display = "none";
-      //   });
-      // });
+      //show sharing options when options button is clicked
+      const optionsButton = document.querySelectorAll(".options_button");
+      optionsButton.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          const sharingOptions =
+            e.target.parentElement.parentElement.querySelector(
+              'div[class="sharing_options"]'
+            );
+          sharingOptions.classList.toggle("active");
+        });
+      });
+      //delete palette when trash icon is clicked
+      const trashIcon = document.querySelectorAll(".fa-trash-alt");
+      trashIcon.forEach((icon) => {
+        icon.addEventListener("click", (e) => {
+          const paletteCard = e.target.parentElement.parentElement;
+          const paletteCardIndex = paletteCard.getAttribute("data-index");
+          paletteData.splice(paletteCardIndex, 1);
+          localStorage.setItem("paletteData", JSON.stringify(paletteData));
+          // paletteCard.remove();
+          paletteCard.style.display = "none";
+        });
+      });
     });
   }
 })();
