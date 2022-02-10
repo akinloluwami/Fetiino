@@ -1,19 +1,20 @@
 const palette = document.querySelector(".palette");
 
-//generate random colors and push them into an array
-function randomColor() {
-  const randomColor = [];
+function generate() {
+  const colorArr = [];
+  //generate 5 random colors
   for (let i = 0; i < 5; i++) {
-    const randomHex = Math.floor(Math.random() * 16777215).toString(16);
-    randomColor.push(randomHex);
+    colorArr.push(randomColor());
   }
-  randomColor.forEach((color) => {
+
+  console.log(colorArr);
+  colorArr.forEach((color) => {
     const colorDiv = document.createElement("div");
     colorDiv.classList.add("color");
-    colorDiv.style.backgroundColor = "#" + color;
+    colorDiv.style.backgroundColor = color;
     const colorName = ntc.name(color);
     colorDiv.innerHTML = `<div class="color_info">
-    <p class="color_code">#${color}</p>
+    <p class="color_code">${color}</p>
     <p class="color_name">${colorName[1]}</p>
 
     </div>`;
@@ -21,7 +22,7 @@ function randomColor() {
   });
 }
 
-randomColor();
+generate();
 //run randomColor function when spacebar is pressed
 document.addEventListener("keydown", (e) => {
   if (e.keyCode === 32) {
@@ -29,6 +30,6 @@ document.addEventListener("keydown", (e) => {
     while (palette.firstChild) {
       palette.removeChild(palette.firstChild);
     }
-    randomColor();
+    generate();
   }
 });
