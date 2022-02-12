@@ -184,6 +184,14 @@
           padding: 10px;
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
           margin: 20px;
+          flex-direction: column;
+          h3 {
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            text-align: left;
+            width: 100%;
+          }
           .colors {
             display: flex;
             align-items: center;
@@ -222,45 +230,52 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 5px;
             transition: ease-in 0.5s;
-            // &:hover {
-            //   width: 40px;
-            //   height: 40px;
-            //   transition: ease-in 0.5s;
-            // }
-          }
-          .sharing_options {
-            position: absolute;
-            bottom: 40px;
-            background-color: #fff;
-            padding: 5px 10px;
-            border-radius: 7px;
-            display: none;
-            &.active {
-              display: flex;
-            }
-            button {
-              background-color: rgba(255, 0, 0, 0.7);
-              width: 1rem;
-              height: 1rem;
-              padding: 1rem;
-              border-radius: 100%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: none;
-              outline: none;
-              cursor: pointer;
-              color: #fff;
-              margin: 10px;
-              transition: ease 0.5s;
-              i {
-                font-size: 1rem;
+            .options_menu {
+              transition: ease-in 0.3;
+              display: none;
+              position: absolute;
+              bottom: 40px;
+              background-color: #fff;
+              padding: 5px;
+              border-radius: 7px;
+              &.show {
+                display: flex;
               }
-              &:hover {
-                background-color: red;
+              .arrow {
+                width: 15px;
+                height: 15px;
+                background-color: #fff;
+                position: absolute;
+                //move to bottom center
+                transform: translate(-50%, -50%);
+                left: 45%;
+                top: 90%;
+                transform: rotate(45deg);
+              }
+              button {
+                background-color: rgba(255, 0, 0, 0.7);
+                width: 1rem;
+                height: 1rem;
+                padding: 1rem;
+                border-radius: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: #fff;
+                margin: 10px;
                 transition: ease 0.5s;
+                i {
+                  font-size: 1rem;
+                }
+                &:hover {
+                  background-color: red;
+                  transition: ease 0.5s;
+                }
               }
             }
           }

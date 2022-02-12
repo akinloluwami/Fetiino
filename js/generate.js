@@ -10,10 +10,12 @@ tippy(savePaletteBtn, {
   content: "Save Palette",
   animation: "fade",
 });
+
 tippy(saveCSSButton, {
   content: "Download CSS",
   animation: "fade",
 });
+
 tippy(saveAsImageButton, {
   content: "Download Image",
   animation: "fade",
@@ -79,35 +81,14 @@ generateButton.addEventListener("click", (e) => {
   }
   generate();
 });
-
-function savePalette() {
-  const paletteName = prompt("Enter a name for your palette");
-  if (paletteName) {
-    const paletteObj = {
-      name: paletteName,
-      colors: newArr,
-    };
-
-    const savedPalettes = JSON.parse(localStorage.getItem("palettes")) || [];
-    savedPalettes.push(paletteObj);
-    localStorage.setItem("palettes", JSON.stringify(savedPalettes));
-  }
-}
-savePaletteBtn.addEventListener("click", () => {
-  // savePaletteBtn.style.color = "red"
-  savePalette();
-});
-//save pallette on ctrl s
-document.addEventListener("keydown", (e) => {
-  if (e.keyCode === 83 && e.ctrlKey) {
-    savePalette();
-  }
-});
-
+let newCssCode;
+let newLastFive;
 function makeCSS() {
   let cssString = "";
   let scssString = "";
-  const lastFive = cssColorNames.slice(-5);
+  let lastFive = [];
+  let cssOutput;
+  lastFive = cssColorNames.slice(-5);
   lastFive.forEach((colorName) => {
     cssString += `
     --${colorName.replace(/\s/g, "_").toLowerCase()}: ${
@@ -118,7 +99,7 @@ function makeCSS() {
       cssHexValues[cssColorNames.indexOf(colorName)]
     };\n`;
   });
-  const cssOutput = `
+  cssOutput = `
   /* Generated with ❤️ by Colorwify */
   
   /*CSS HEX Values*/
@@ -127,28 +108,56 @@ function makeCSS() {
   /*SCSS HEX Values*/
   ${scssString}
   `;
-  const css = cssOutput;
+  newCssCode = cssOutput;
+  newLastFive = lastFive;
+}
+function downloadCss() {
+  const css = newCssCode;
   const cssFile = new Blob([css], { type: "text/css" });
   const cssUrl = URL.createObjectURL(cssFile);
   const link = document.createElement("a");
   link.href = cssUrl;
   link.setAttribute(
     "download",
-    `${lastFive[0].replace(/\s/g, "")}byColorwify.css`
+    `${newLastFive[0].replace(/\s/g, "")}byColorwify.css`
   );
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 }
 
-//run make css on click
 saveCSSButton.addEventListener("click", () => {
   makeCSS();
+  downloadCss();
 });
-//run make css on ctrl d
 document.addEventListener("keydown", (e) => {
   e.preventDefault();
   if (e.keyCode === 68 && e.ctrlKey) {
     makeCSS();
+    downloadCss();
+  }
+});
+
+function savePalette() {
+  makeCSS();
+  const paletteName = prompt("Enter a name for your palette");
+  if (paletteName) {
+    const paletteObj = {
+      name: paletteName,
+      colors: newArr,
+      cssCode: newCssCode,
+    };
+
+    const savedPalettes = JSON.parse(localStorage.getItem("palettes")) || [];
+    savedPalettes.push(paletteObj);
+    localStorage.setItem("palettes", JSON.stringify(savedPalettes));
+  }
+}
+savePaletteBtn.addEventListener("click", () => {
+  savePalette();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.keyCode === 83 && e.ctrlKey) {
+    savePalette();
   }
 });

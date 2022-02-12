@@ -1175,6 +1175,18 @@
   -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   margin: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card h3 {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  text-align: left;
+  width: 100%;
 }
 
 .saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .colors {
@@ -1223,27 +1235,42 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 15px;
+  padding: 5px;
   -webkit-transition: ease-in 0.5s;
   transition: ease-in 0.5s;
 }
 
-.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .sharing_options {
+.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .options_button .options_menu {
+  -webkit-transition: ease-in 0.3;
+  transition: ease-in 0.3;
+  display: none;
   position: absolute;
   bottom: 40px;
   background-color: #fff;
-  padding: 5px 10px;
+  padding: 5px;
   border-radius: 7px;
-  display: none;
 }
 
-.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .sharing_options.active {
+.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .options_button .options_menu.show {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .sharing_options button {
+.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .options_button .options_menu .arrow {
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 45%;
+  top: 90%;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .options_button .options_menu button {
   background-color: rgba(255, 0, 0, 0.7);
   width: 1rem;
   height: 1rem;
@@ -1267,11 +1294,11 @@
   transition: ease 0.5s;
 }
 
-.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .sharing_options button i {
+.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .options_button .options_menu button i {
   font-size: 1rem;
 }
 
-.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .sharing_options button:hover {
+.saved_palettes .main .saved_color_palettes_container .saved_color_palettes .saved_palette_card .options_button .options_menu button:hover {
   background-color: red;
   -webkit-transition: ease 0.5s;
   transition: ease 0.5s;
