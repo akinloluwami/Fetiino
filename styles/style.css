@@ -1449,6 +1449,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
 }
 
 .generate .main .palette {
@@ -1463,7 +1464,6 @@
 .generate .main .palette .color {
   width: 20%;
   height: 100%;
-  background-color: red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1473,5 +1473,119 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.generate .main .palette .color input {
+  color: #000;
+  font-weight: 500;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  pointer-events: none;
+  text-align: center;
+}
+
+.generate .main .palette .color input::-moz-selection {
+  background: transparent;
+}
+
+.generate .main .palette .color input::selection {
+  background: transparent;
+}
+
+.generate .main .palette .color i {
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.7rem;
+  border-radius: 100%;
+  -webkit-transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.3s;
+}
+
+.generate .main .palette .color p {
+  margin: 1rem 0;
+}
+
+.generate .main .options {
+  width: 100%;
+  height: 10vh;
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.generate .main .options p {
+  font-size: 1rem;
+  color: #000;
+  margin: 0;
+  opacity: 1;
+  -webkit-transition: ease-in 0.5s;
+  transition: ease-in 0.5s;
+}
+
+.generate .main .options p.fade {
+  opacity: 0;
+  -webkit-transition: ease-in 0.5s;
+  transition: ease-in 0.5s;
+}
+
+.generate .main .options .generate_btn {
+  width: 20%;
+  height: 80%;
+  border: none;
+  background-color: red;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  margin-left: 3rem;
+  border-radius: 0.5rem;
+}
+
+.generate .main .options .more_options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 3rem;
+}
+
+.generate .main .options .more_options i {
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 0 0.5rem;
+  color: #000;
 }
 /*# sourceMappingURL=style.css.map */

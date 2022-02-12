@@ -189,91 +189,29 @@ const loadFile = function (e) {
           copyCopied.style.display = "none";
         });
       });
-      const singleColorValues = [
-        {
-          colorName: colorNames[0].toLowerCase(),
-          colorHexCode: colorHexValues[0],
-          colorRgbCode: colorRgbValues[0],
-        },
-        {
-          colorName: colorNames[1].toLowerCase(),
-          colorHexCode: colorHexValues[1],
-        },
-        {
-          colorName: colorNames[2].toLowerCase(),
-          colorHexCode: colorHexValues[2],
-        },
-        {
-          colorName: colorNames[3].toLowerCase(),
-          colorHexCode: colorHexValues[3],
-        },
-        {
-          colorName: colorNames[4].toLowerCase(),
-          colorHexCode: colorHexValues[4],
-        },
-        {
-          colorName: colorNames[5].toLowerCase(),
-          colorHexCode: colorHexValues[5],
-        },
-        {
-          colorName: colorNames[6].toLowerCase(),
-          colorHexCode: colorHexValues[6],
-        },
+
+      const colorsArray = [
+        colorHexValues[0],
+        colorHexValues[1],
+        colorHexValues[2],
+        colorHexValues[3],
+        colorHexValues[4],
       ];
-
-      const cssOutput = `
-      /* Generated with ❤️ by Colorwify */
-
-      /*CSS HEX Values*/
-
-    --${singleColorValues[0].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[0].colorHexCode
-      };
-    --${singleColorValues[1].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[1].colorHexCode
-      };
-    --${singleColorValues[2].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[2].colorHexCode
-      };
-    --${singleColorValues[3].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[3].colorHexCode
-      };
-    --${singleColorValues[4].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[4].colorHexCode
-      };
-    --${singleColorValues[5].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[5].colorHexCode
-      };
-    --${singleColorValues[6].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[6].colorHexCode
-      };
-
-
-      /*SCSS HEX Values*/
-
-    $${singleColorValues[0].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[0].colorHexCode
-      };
-    $${singleColorValues[1].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[1].colorHexCode
-      };
-    $${singleColorValues[2].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[2].colorHexCode
-      };
-    $${singleColorValues[3].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[3].colorHexCode
-      };
-    $${singleColorValues[4].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[4].colorHexCode
-      };
-    $${singleColorValues[5].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[5].colorHexCode
-      };
-    $${singleColorValues[6].colorName.replace(/\s/g, "_")}: ${
-        singleColorValues[6].colorHexCode
-      };
-    `;
-      cssCode.textContent = cssOutput;
+      function savePalette() {
+        const paletteName = prompt("Enter a name for your palette");
+        if (paletteName) {
+          const paletteObj = {
+            name: paletteName,
+            colors: colorsArray,
+          };
+          const palette = JSON.parse(localStorage.getItem("palettes"));
+          if (palette) {
+            palette.push(paletteObj);
+            localStorage.setItem("palettes", JSON.stringify(palette));
+          }
+        }
+      }
+      savePaletteButton.addEventListener("click", savePalette);
       //copy css code to clipboard
       function copyCssCode() {
         cssCode.select();
@@ -287,10 +225,6 @@ const loadFile = function (e) {
       }
       copyCssButton.addEventListener("click", copyCssCode);
 
-      //disable copy button if no css code is present
-      if (cssCode.textContent === "") {
-        copyCssCodeButton.disabled = true;
-      }
       //disable textarea editable
       cssCode.setAttribute("readonly", "readonly");
 
@@ -395,31 +329,9 @@ const loadFile = function (e) {
         element.click();
         document.body.removeChild(element);
       }
-      //push color name and hex code to palette object
-      const palette = {
-        colorNames: colorNames,
-        colorHexValues: colorHexValues,
-      };
-      function savePalette() {
-        //use palette object to save palette data array
-        const paletteData = JSON.parse(localStorage.getItem("paletteData"));
-        if (paletteData === null) {
-          const paletteData = [];
-          paletteData.push(palette);
-          localStorage.setItem("paletteData", JSON.stringify(paletteData));
-        } else {
-          paletteData.push(palette);
-          localStorage.setItem("paletteData", JSON.stringify(paletteData));
-        }
-        savePaletteButton.innerHTML = `<i class="fa fa-check"></i> Saved`;
-        savePaletteButton.style.backgroundColor = "grey";
-      }
-      savePaletteButton.addEventListener("click", savePalette, {
-        once: true,
-      });
+
       function exportPalette() {
         popUp.classList.add("active");
-        // rightSidebar.style.pointerEvents = "none";
         mainBg.style.pointerEvents = "none";
         leftSidebar.style.pointerEvents = "none";
         /*************************************************/
