@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css"
+      integrity="sha512-4wFGk961cJS2gpSfzy1vU+R8Q93foZOoGgfEDetiClOqNvggdtnRpdCsAgfm8VU9mKkv2unla8RBYwA6hoFwqg=="
+      crossorigin="anonymous"
+    />
+    <title>Fetiino - Extract colors from image</title>
+  </head>
+  <body>
+    <div class="extract">
+      <div class="popup">
+        <div class="close_div">
+          <i class="fa fa-times-circle"></i>
+        </div>
+
+        <div class="popup_content">
+          <div class="popup_content_left">
+            <h2>Export As</h2>
+            <ul>
+              <li class="export_as_css"><i class="fab fa-css3-alt"></i>CSS</li>
+              <li class="export_as_image">
+                <i class="fa fa-file-image"></i>Image
+              </li>
+              <li><i class="fab fa-react"></i>React Component</li>
+              <li><i class="fab fa-html5"></i>Embed</li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="popup_content_right">
+            <div class="default_popup_right_content">
+              <img src="../images/pointer.png" alt="" />
+              <h2>Choose an export option</h2>
+            </div>
+            <div class="css_result">
+              <p class="copied_message">Copied to clipboard!</p>
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                class="css_code"
+              ></textarea>
+              <button class="copy_css_button">
+                <i class="fa fa-clone"></i>
+              </button>
+              <a class="download_css_button">
+                <i class="fa fa-download"></i>
+                <p>Download</p>
+              </a>
+            </div>
+            <div class="image_result"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="left_sidebar">
+        <div class="logo">
+          <h3>Colorwify</h3>
+          <div class="dot"></div>
+        </div>
+        <div class="links">
+          <ul class="navlinks">
+            <li>
+              <a href="../generate/"
+                ><i class="fa fa-images"></i>Palette From Image</a
+              >
+            </li>
+            <li>
+              <a href="../generate/"
+                ><i class="fa fa-palette"></i>Generate Palettes</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-eye-dropper"></i>Color Picker</a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fa fa-sync-alt"></i>Color Format Converter</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fa fa-paint-brush"></i>Gradient Maker<small
+                  ><sup>Coming soon...</sup></small
+                ></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-copyright"></i>Brand Colors<small
+                  ><sup>Coming soon...</sup></small
+                ></a
+              >
+            </li>
+
+            <li>
+              <a href="../saved-palettes/"
+                ><i class="fa fa-bookmark"></i>Saved Palletes
+              </a>
+            </li>
+            <!-- Brand colors -->
+          </ul>
+        </div>
+        <div class="coming_soon">
+          <div class="emoji">
+            <img
+              src="https://cliply.co/wp-content/uploads/2021/03/392103580_BLUSHING_EMOJI_400.png"
+              alt=""
+            />
+          </div>
+          <p>
+            Create, save, edit, share and do more with your colors. Android and
+            iOS app, Chrome extension. All Coming Soon...
+          </p>
+          <button>Join The Waitlist</button>
+        </div>
+        <div class="contribute">
+          <a href="#">
+            Contribute On GitHub
+            <i class="fab fa-github"></i>
+            <sup>Open-Source</sup>
+          </a>
+        </div>
+      </div>
+      <div class="main">
+        <h2>Extract Colors From Image</h2>
+        <input type="file" class="upload_input" accept="image/*" />
+        <!-- <button>
+          Generate new palette<i class="fa fa-sparkles new_palette"></i>
+        </button> -->
+        <div class="upload_file">
+          <img alt="" class="uploaded_image" />
+        </div>
+        <!--div class="settings">
+          <h3>Settings</h3>
+          <div class="setting_container">
+            <div class="number_of_pallete">
+              <h4>Number of Palette</h4>
+              <input
+                type="range"
+                name=""
+                id=""
+                min="5"
+                max="20"
+                value="7"
+                class="range_slider"
+              />
+            </div>
+            <div class="color_format">
+              <h4>Color format</h4>
+              <input type="radio" name="color-format" id="" />RGB
+              <input type="radio" name="color-format" id="" />HEX
+            </div>
+            <div class="preview_dominant_color">
+              <h4>Adapt Dominant Color To Ui</h4>
+              <input type="checkbox" name="" id="" />
+            </div>
+          </div>
+        </div-->
+      </div>
+      <div class="right_sidebar">
+        <div class="default">
+          <h3>Nothing to display</h3>
+          <img
+            src="https://i.pinimg.com/originals/53/e3/93/53e39363252692926292849c6650a8af.png"
+            alt=""
+          />
+          <h3>Upload an image to get started</h3>
+        </div>
+        <div class="image_loaded">
+          <div class="dominant_color">
+            <h3>Dominant Color</h3>
+            <div class="dominant">
+              <div class="dominant_color_code_and_copy_button"></div>
+            </div>
+          </div>
+          <div class="color_palette">
+            <h3>Color Palette</h3>
+          </div>
+          <div class="buttons">
+            <button class="export_palette">
+              <i class="fas fa-paper-plane"></i> Export Palette
+            </button>
+            <button class="save_palette">
+              <i class="fa fa-heart"></i> Save Palette
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../libraries/nameThatColor.js"></script>
+    <script src="../libraries/colorThief.umd.js"></script>
+    <!-- <script src="./libraries/reimg.js"></script> -->
+    <script src="../js/colorwify.js"></script>
+  </body>
+</html>

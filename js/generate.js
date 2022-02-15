@@ -1,3 +1,22 @@
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return { r, g, b };
+}
+
+let check = "";
+function checkLuminance(hexCode) {
+  const rgb = hexToRgb(hexCode);
+  const luminance = 0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b;
+  check = luminance;
+  if (luminance < 100) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const palette = document.querySelector(".palette");
 const cssHexValues = [];
 const cssColorNames = [];
@@ -26,18 +45,25 @@ function generate() {
   const colorArr = [];
   newArr = colorArr;
   for (let i = 0; i < 5; i++) {
-    colorArr.push(randomColor());
+    colorArr.push(randomColor({ luminosity: "random", hue: "random" }));
   }
+  //
   colorArr.forEach((color) => {
     const colorDiv = document.createElement("div");
-
     colorDiv.classList.add("color");
     colorDiv.style.backgroundColor = color;
     const colorName = ntc.name(color);
+
     colorDiv.innerHTML = `
     <input class="color_code" value=${color} readonly>
     <p class="color_name">${colorName[1]}</p>
     <i class="fa fa-clone"></i>`;
+    if (checkLuminance(color) === true) {
+      colorDiv.style.color = "white";
+      colorDiv.children[0].style.color = "white";
+    } else {
+      colorDiv.style.color = "black";
+    }
     cssHexValues.push(color);
     cssColorNames.push(colorName[1]);
     palette.appendChild(colorDiv);
@@ -73,6 +99,7 @@ document.addEventListener("keydown", (e) => {
       palette.removeChild(palette.firstChild);
     }
     generate();
+    console.log(check);
   }
 });
 generateButton.addEventListener("click", (e) => {
