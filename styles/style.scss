@@ -104,6 +104,9 @@
             font-weight: 600;
           }
         }
+        .wheel_mobile {
+          display: none;
+        }
         .buttons {
           display: flex;
           width: 100%;
@@ -141,6 +144,52 @@
   display: none;
   visibility: hidden;
   pointer-events: none;
+}
+//add mobile media query
+@media screen and (max-width: 768px) {
+  .fetiino {
+    .fetiino_inner {
+      .navbar {
+        height: 8vh;
+        .navlinks {
+          display: none;
+        }
+      }
+      .hero {
+        align-items: center;
+        justify-content: center;
+        padding-top: 0;
+        .hero_text_content {
+          .main_text {
+            h1 {
+              font-size: 4.7rem;
+            }
+          }
+          .wheel_mobile {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+          }
+          .buttons {
+            flex-direction: column;
+            align-items: flex-start;
+            button {
+              width: 80%;
+              height: 3rem;
+              margin-bottom: 1rem;
+            }
+            a {
+              font-size: 1.2rem;
+            }
+          }
+        }
+        .hero_color_wheel {
+          display: none;
+        }
+      }
+    }
+  }
 }
 @import "./extract";
 @import "./saved_palettes";

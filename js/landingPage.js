@@ -25,8 +25,26 @@ const colorPicker = new iro.ColorPicker(".wheel", {
   color: "#f00",
   slider: false,
 });
+const colorPickerMobile = new iro.ColorPicker(".wheel_mobile", {
+  width: 300,
+  color: "#f00",
+  slider: false,
+});
 
 colorPicker.on("color:change", function (color) {
+  const currentColor = color.hexString;
+  heroText.style.color = currentColor;
+  heroSmallText.style.borderColor = currentColor;
+  heroSmallTextLink.style.color = currentColor;
+  getStartedButton.style.backgroundColor = currentColor;
+  savedIcon.style.color = currentColor;
+  const colorBars = document.querySelectorAll(".color_bars .color_bar");
+  colorBars.forEach((colorBar) => {
+    colorBar.remove();
+  });
+  generateColorBars();
+});
+colorPickerMobile.on("color:change", function (color) {
   const currentColor = color.hexString;
   heroText.style.color = currentColor;
   heroSmallText.style.borderColor = currentColor;

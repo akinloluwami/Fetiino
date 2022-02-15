@@ -153,6 +153,10 @@
   font-weight: 600;
 }
 
+.fetiino .fetiino_inner .hero .hero_text_content .wheel_mobile {
+  display: none;
+}
+
 .fetiino .fetiino_inner .hero .hero_text_content .buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -194,6 +198,59 @@
   display: none;
   visibility: hidden;
   pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+  .fetiino .fetiino_inner .navbar {
+    height: 8vh;
+  }
+  .fetiino .fetiino_inner .navbar .navlinks {
+    display: none;
+  }
+  .fetiino .fetiino_inner .hero {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 0;
+  }
+  .fetiino .fetiino_inner .hero .hero_text_content .main_text h1 {
+    font-size: 4.7rem;
+  }
+  .fetiino .fetiino_inner .hero .hero_text_content .wheel_mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .fetiino .fetiino_inner .hero .hero_text_content .buttons {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .fetiino .fetiino_inner .hero .hero_text_content .buttons button {
+    width: 80%;
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+  .fetiino .fetiino_inner .hero .hero_text_content .buttons a {
+    font-size: 1.2rem;
+  }
+  .fetiino .fetiino_inner .hero .hero_color_wheel {
+    display: none;
+  }
 }
 
 .extract {
