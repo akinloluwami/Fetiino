@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css' integrity='sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==' crossorigin='anonymous'/>
-    <title>Colorwify - Generate Palettes</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css"
+      integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
+      crossorigin="anonymous"
+    />
+    <title>Fetiino - Color Format Converter</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css"
@@ -15,22 +20,28 @@
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body>
-    <div class="generate">
+    <div class="converter">
       <div class="left_sidebar">
         <div class="logo">
-          <h3>Fettino</h3>
+          <h3>Fetiino</h3>
           <div class="dot"></div>
         </div>
         <div class="links">
           <ul class="navlinks">
             <li>
-              <a href="/extract/"><i class="fa fa-images"></i>Palette From Image</a>
+              <a href="/extract/"
+                ><i class="fa fa-images"></i>Palette From Image</a
+              >
             </li>
             <li>
-              <a href="/generate/"><i class="fa fa-palette"></i>Generate Palettes</a>
+              <a href="/generate/"
+                ><i class="fa fa-palette"></i>Generate Palettes</a
+              >
             </li>
             <li>
-              <a href="/color-picker"><i class="fa fa-eye-dropper"></i>Color Picker</a>
+              <a href="/color-picker"
+                ><i class="fa fa-eye-dropper"></i>Color Picker</a
+              >
             </li>
             <li>
               <a href="/converter"
@@ -48,7 +59,6 @@
                 ><i class="fa fa-heart"></i>Saved Palletes
               </a>
             </li>
-           
           </ul>
         </div>
         <div class="coming_soon">
@@ -71,28 +81,46 @@
             <sup>Open-Source</sup>
           </a>
         </div>
-      </div>s
+      </div>
+
       <div class="main">
-       <div class="palette"></div>
-       <div class="options">
-         <button class="generate_btn">Generate</button>
-         <p>Press the spacebar to generate a new palette</p>
-         <ul class="more_options">
-          <li><i class="fa fa-heart"></i></li>
-          <li><i class="fab fa-css3-alt"></i></li>
-          <li><i class="fa fa-image"></i></li>
-         </ul>
-       </div>
+        <div class="box"></div>
+        <h2>Color Format Converter</h2>
+        <input
+          type="text"
+          class="color_code_input"
+          placeholder="Enter color code (HEX, RGB, HSL, CMYK)"
+        />
+        <div class="results">
+          <div class="result_card rgb">
+            <h3>RGB</h3>
+            <input type="text" readonly />
+            <i class="fa fa-clone"></i>
+          </div>
+          <div class="result_card cmyk">
+            <h3>CMYK</h3>
+            <input type="text" readonly />
+            <i class="fa fa-clone"></i>
+          </div>
+          <div class="result_card hsl">
+            <h3>HSL</h3>
+            <input type="text" readonly />
+            <i class="fa fa-clone"></i>
+          </div>
+          <div class="result_card hex">
+            <h3>HEX</h3>
+            <input type="text" readonly />
+            <i class="fa fa-clone"></i>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-    <script>
-    </script>
- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
-    <script src="../libraries/randomColor.js"></script>
+
+    <script src="../libraries/w3Color.js"></script>
     <script src="../libraries/nameThatColor.js"></script>
-    <script src="../js/generate.js"></script>
+    <script src="../js/converter.js"></script>
   </body>
 </html>

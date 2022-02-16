@@ -884,7 +884,7 @@
 }
 
 .extract .right_sidebar .image_loaded .dominant_color .dominant .dominant_color_code_and_copy_button input {
-  color: #fff;
+  color: red;
   font-weight: 500;
   font-size: 0.9rem;
   outline: none;
@@ -1862,5 +1862,251 @@
   font-size: 2rem;
   margin: 0 0.5rem;
   color: #000;
+}
+
+.converter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.converter .left_sidebar {
+  width: 20%;
+  background-color: #fff;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.converter .left_sidebar .logo {
+  position: relative;
+  margin: 20px 0;
+}
+
+.converter .left_sidebar .logo .dot {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 100%;
+  position: absolute;
+  top: 2px;
+  right: -9px;
+}
+
+.converter .left_sidebar .links .navlinks {
+  list-style: none;
+}
+
+.converter .left_sidebar .links .navlinks li {
+  margin: 15px 0;
+}
+
+.converter .left_sidebar .links .navlinks li small sup {
+  background-color: red;
+  color: #fff;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.converter .left_sidebar .links .navlinks li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.converter .left_sidebar .links .navlinks li a i {
+  color: red;
+  margin-right: 5px;
+}
+
+.converter .left_sidebar .coming_soon {
+  background-color: #f6f9fe;
+  width: 70%;
+  height: 200px;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+}
+
+.converter .left_sidebar .coming_soon .emoji {
+  background-color: rgba(255, 0, 0, 0.288);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+.converter .left_sidebar .coming_soon .emoji img {
+  width: 50px;
+}
+
+.converter .left_sidebar .coming_soon p {
+  font-size: 0.8rem;
+  color: #000;
+  text-align: center;
+}
+
+.converter .left_sidebar .coming_soon button {
+  width: 80%;
+  height: 2rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  background-color: red;
+}
+
+.converter .left_sidebar .contribute {
+  margin-bottom: 20px;
+}
+
+.converter .left_sidebar .contribute a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.8rem;
+}
+
+.converter .left_sidebar .contribute a sup {
+  background-color: red;
+  color: #fff;
+  padding: 2px;
+  border-radius: 10px;
+  font-size: 0.5rem;
+}
+
+.converter .main {
+  width: 80%;
+  background-color: #f6f5fb;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.converter .main h2 {
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: left;
+  width: 90%;
+}
+
+.converter .main .color_code_input {
+  width: 350px;
+  height: 40px;
+  margin-top: 40px;
+  outline: none;
+  padding-left: 10px;
+  border-radius: 7px;
+  border: 2px solid #796f6f;
+}
+
+.converter .main .results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.converter .main .results .result_card {
+  height: 150px;
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  border-radius: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.converter .main .results .result_card h3 {
+  text-align: center;
+}
+
+.converter .main .results .result_card input {
+  width: 100%;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+.converter .main .results .result_card input::-moz-selection {
+  background: none;
+}
+
+.converter .main .results .result_card input::selection {
+  background: none;
+}
+
+.converter .main .results .result_card i {
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

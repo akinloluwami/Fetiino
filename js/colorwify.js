@@ -74,7 +74,7 @@ const loadFile = function (e) {
   uploadedImage.onload = function () {
     URL.revokeObjectURL(uploadedImage.src);
     /**************************Get Dominant Color************************/
-    (function getDominantColor() {
+    function getDominantColor() {
       const dominantColor = colorThief.getColor(uploadedImage);
       const [r, g, b] = [dominantColor[0], dominantColor[1], dominantColor[2]];
       // mainBg.style.backgroundColor = `rgb(${r},${g},${b})`;
@@ -107,6 +107,12 @@ const loadFile = function (e) {
       }
       /***************************************/
 
+      //remove the current color code before adding new one
+      if (dominantColorCodeAndButton.childElementCount > 0) {
+        dominantColorCodeAndButton.removeChild(
+          dominantColorCodeAndButton.childNodes[0]
+        );
+      }
       dominantColorCodeAndButton.appendChild(dominantColorCode);
       const copyCopied = document.createElement("small");
       copyCopied.textContent = "Copy";
@@ -122,29 +128,29 @@ const loadFile = function (e) {
       copyColorCodeButton.addEventListener("mouseleave", () => {
         copyCopied.style.display = "none";
       });
-    })();
+    }
+
+    getDominantColor();
     /*****************************************************************/
     //***********Save Palette Data to localstorage******/
     /*******************Generate Color Palette************************/
-    (function getColorPalette() {
+    function getColorPalette() {
       const colorPalette = colorThief.getPalette(image, count);
       const colorHexValues = [];
       const colorNames = [];
       const colorRgbValues = [];
-      colorPalette.forEach((color) => {
+      colorPalette.forEach((color, index) => {
         const [r, g, b] = [color[0], color[1], color[2]];
         const hexValue = rgbToHex(r, g, b);
         const nameColor = ntc.name(hexValue);
-        n_rgb = nameColor[0]; // RGB value of closest match
-        n_name = nameColor[1]; // Text string: Color name
+        n_rgb = nameColor[0];
+        n_name = nameColor[1];
         colorHexValues.push(hexValue);
         colorNames.push(n_name);
         colorRgbValues.push(r, g, b);
         const singleColor = document.createElement("div");
         singleColor.classList.add("color");
         singleColor.style.backgroundColor = `rgb(${r},${g},${b})`;
-        // colorPaletteDiv.appendChild(singleColor);
-        //remove current color palette before adding new one
         colorPaletteDiv.appendChild(singleColor);
 
         const colorPaletteCodeAndCopyButton = document.createElement("div");
@@ -350,11 +356,13 @@ const loadFile = function (e) {
             : null
           : null;
       });
-    })();
+    }
+    getColorPalette();
     /***********************************************************************/
   };
   defaultSidebarContent.style.display = "none";
   imageLoaded.style.display = "flex";
+  colorPaletteDiv.replaceChildren();
 };
 
 uploadInput.addEventListener("change", loadFile);
@@ -366,3 +374,4 @@ function rgbToHex(r, g, b) {
 /************************************************/
 
 //function makeGradient(){}
+//PWA
