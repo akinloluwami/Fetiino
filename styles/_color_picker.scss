@@ -132,6 +132,15 @@
         display: flex;
         flex-direction: column;
         margin-top: 50px;
+        align-items: center;
+        .color_box {
+          width: 350px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+        }
         .result_card {
           height: 50px;
           width: 350px;

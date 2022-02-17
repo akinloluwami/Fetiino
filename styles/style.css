@@ -2405,6 +2405,24 @@
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.color_picker .main .main_content .results .color_box {
+  width: 350px;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1.2rem;
 }
 
 .color_picker .main .main_content .results .result_card {

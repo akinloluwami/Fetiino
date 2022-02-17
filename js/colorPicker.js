@@ -7,6 +7,7 @@ const cmykValue = document.querySelector(".cmyk input");
 const hslValue = document.querySelector(".hsl input");
 const hexValue = document.querySelector(".hex input");
 const resultsCard = document.querySelectorAll(".result_card");
+const colorBox = document.querySelector(".color_box");
 
 colorPicker.on("color:change", function (color) {
   const { hexString, rgbString, hslString } = color;
@@ -15,6 +16,10 @@ colorPicker.on("color:change", function (color) {
   hslValue.value = hslString;
   const getCodes = w3color(hexString);
   cmykValue.value = getCodes.toCmykString();
+  colorBox.style.backgroundColor = hexString;
+  const nameColor = ntc.name(hexString);
+  const colorName = nameColor[1];
+  colorBox.textContent = colorName;
 });
 
 resultsCard.forEach((card) => {
