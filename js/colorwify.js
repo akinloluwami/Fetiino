@@ -7,6 +7,9 @@ const dominantColorCodeAndButton = document.querySelector(
 const dominantColorContainer = document.querySelector(".dominant_color");
 const dominantColorDiv = document.querySelector(".dominant");
 const colorPaletteDiv = document.querySelector(".color_palette");
+const colorPaletteContainer = document.querySelector(
+  ".color_palette_container"
+);
 const uploadInput = document.querySelector(".upload_input");
 const defaultSidebarContent = document.querySelector(".default");
 const rightSidebar = document.querySelector(".right_sidebar");
@@ -27,7 +30,7 @@ const exportAsCssButton = document.querySelector(".export_as_css");
 const defaultPopUpRightContent = document.querySelector(
   ".default_popup_right_content"
 );
-exportAsImageButton = document.querySelector(".export_as_image");
+const exportAsImageButton = document.querySelector(".export_as_image");
 const imageResult = document.querySelector(".image_result");
 const savePaletteButton = document.querySelector(".save_palette");
 
@@ -65,6 +68,25 @@ closePopUpButton.addEventListener("click", () => {
   // rightSidebar.style.pointerEvents = "auto";
   mainBg.style.pointerEvents = "auto";
 });
+
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return { r, g, b };
+}
+
+let check = "";
+function checkLuminance(hexCode) {
+  const rgb = hexToRgb(hexCode);
+  const luminance = 0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b;
+  check = luminance;
+  if (luminance < 100) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 const loadFile = function (e) {
   const uploadedImage = document.querySelector(".uploaded_image");
@@ -105,14 +127,6 @@ const loadFile = function (e) {
           copyCopied.style.display = "none";
         }, 800);
       }
-      /***************************************/
-
-      //remove the current color code before adding new one
-      if (dominantColorCodeAndButton.childElementCount > 0) {
-        dominantColorCodeAndButton.removeChild(
-          dominantColorCodeAndButton.childNodes[0]
-        );
-      }
       dominantColorCodeAndButton.appendChild(dominantColorCode);
       const copyCopied = document.createElement("small");
       copyCopied.textContent = "Copy";
@@ -151,15 +165,21 @@ const loadFile = function (e) {
         const singleColor = document.createElement("div");
         singleColor.classList.add("color");
         singleColor.style.backgroundColor = `rgb(${r},${g},${b})`;
-        colorPaletteDiv.appendChild(singleColor);
+        colorPaletteContainer.appendChild(singleColor);
 
         const colorPaletteCodeAndCopyButton = document.createElement("div");
         colorPaletteCodeAndCopyButton.classList.add(
           "color_palette_code_and_copy_button"
         );
-        colorPaletteDiv.appendChild(colorPaletteCodeAndCopyButton);
+        colorPaletteContainer.appendChild(colorPaletteCodeAndCopyButton);
         const colorPaletteCode = document.createElement("input");
         colorPaletteCode.value = hexValue;
+
+        if (checkLuminance(hexValue) === true) {
+          colorPaletteCode.style.color = "white";
+        } else {
+          colorPaletteCode.style.color = "black";
+        }
 
         function copyColorCode() {
           colorPaletteCode.select();
@@ -253,7 +273,7 @@ const loadFile = function (e) {
       });
       const svgImage = `
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1034.9">
-  <defs>
+        <defs>
     <style>
       .cls-1, .cls-9 {
         fill: #f6f6f6;
@@ -314,27 +334,11 @@ const loadFile = function (e) {
   <text class="cls-9" transform="translate(730.6 891.01) rotate(-90)">${colorNames[3]}</text>
   <text class="cls-9" transform="translate(933.81 888.61) rotate(-90)">${colorNames[4]}</text>
 </svg>
-<button class="download_svg_button onClick=downloadSvgImage()><i class="fa fa-download"></i></button>
-</div>
         `;
 
       imageResult.innerHTML = svgImage;
-      //download svg image as a file
-      function downloadSvgImage() {
-        const element = document.createElement("a");
-        element.setAttribute(
-          "href",
-          "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgImage)
-        );
-        element.setAttribute(
-          "download",
-          `${colorNames[0].replace(/\s/g, "")}Palette.svg`
-        );
-        element.style.display = "none";
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
-      }
+
+      exportAsImageButton.addEventListener("click", () => {});
 
       function exportPalette() {
         popUp.classList.add("active");
@@ -362,7 +366,8 @@ const loadFile = function (e) {
   };
   defaultSidebarContent.style.display = "none";
   imageLoaded.style.display = "flex";
-  colorPaletteDiv.replaceChildren();
+  colorPaletteContainer.replaceChildren();
+  dominantColorCodeAndButton.replaceChildren();
 };
 
 uploadInput.addEventListener("change", loadFile);

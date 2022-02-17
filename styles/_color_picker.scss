@@ -1,4 +1,4 @@
-.converter {
+.color_picker {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -122,57 +122,48 @@
       text-align: left;
       width: 90%;
     }
-    .input_container {
+    .main_content {
       display: flex;
       align-items: center;
-      margin-top: 40px;
-      .color_code_input {
-        width: 350px;
-        height: 40px;
-        outline: none;
-        padding-left: 10px;
-        border-radius: 7px;
-        border: 2px solid #796f6f;
-      }
-      .color_box {
-        height: 40px;
-        width: 40px;
-        border-radius: 7px;
-        margin-right: 10px;
-      }
-    }
-    .results {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 50px;
-      .result_card {
-        height: 150px;
-        width: 300px;
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-        margin: 20px;
-        border-radius: 7px;
+      justify-content: space-between;
+      width: 80%;
+      height: 100%;
+      .results {
         display: flex;
-        align-items: center;
         flex-direction: column;
-        justify-content: space-between;
-        h3 {
-          text-align: center;
-        }
-        input {
-          width: 100%;
-          outline: none;
-          border: none;
-          text-align: center;
-          &::selection {
-            background: none;
+        margin-top: 50px;
+        .result_card {
+          height: 50px;
+          width: 300px;
+          padding: 20px;
+          background-color: #fff;
+          box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+          margin: 20px;
+          border-radius: 7px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          h3 {
+            text-align: center;
+            font-size: 1.2rem;
           }
-        }
-        i {
-          cursor: pointer;
+          input {
+            width: 100%;
+            outline: none;
+            border: none;
+            text-align: center;
+            &::selection {
+              background: none;
+            }
+          }
+          i {
+            cursor: pointer;
+          }
         }
       }
     }
   }
+}
+.IroSlider {
+  display: block;
 }

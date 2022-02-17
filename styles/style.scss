@@ -140,11 +140,51 @@
   }
 }
 
-.IroSlider {
-  display: none;
-  visibility: hidden;
-  pointer-events: none;
+.palette_image {
+  width: 420px;
+  height: 420px;
+  margin-bottom: 300px;
+  background-color: #eaedf2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: space-between;
+  .text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    h1 {
+      background-color: #fff;
+      padding: 10px;
+      font-size: 1.5rem;
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+    }
+    h2 {
+      margin: 15px 0;
+    }
+  }
+  .pills {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin: 10px 0;
+    .pill {
+      height: 100%;
+      width: 300px;
+      background-color: rebeccapurple;
+      margin: 0 10px;
+      border-radius: 50px;
+    }
+  }
 }
+
 //add mobile media query
 @media screen and (max-width: 768px) {
   .fetiino {
@@ -195,3 +235,4 @@
 @import "./saved_palettes";
 @import "./generate";
 @import "./converter";
+@import "./color_picker";

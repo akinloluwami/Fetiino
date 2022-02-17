@@ -5,6 +5,7 @@ const rgbValue = document.querySelector(".rgb input");
 const cmykValue = document.querySelector(".cmyk input");
 const hslValue = document.querySelector(".hsl input");
 const hexValue = document.querySelector(".hex input");
+const colorBox = document.querySelector(".color_box");
 
 function convert() {
   const getCodes = w3color(colorCodeInput.value, box);
@@ -16,7 +17,8 @@ function convert() {
   hslValue.value = hsl;
   cmykValue.value = cmyk;
   hexValue.value = hex;
-  colorCodeInput.style.borderColor = hex;
+  //   colorCodeInput.style.borderColor = hex;
+  colorBox.style.backgroundColor = hex;
   resultsCard.forEach((card) => {
     card.style.borderColor = hex;
     const colorCodeValue = card.childNodes[3];
@@ -28,7 +30,6 @@ function convert() {
       hideOnClick: true,
     });
     copyButton.addEventListener("click", () => {
-      //copy color code to clipboard
       colorCodeValue.select();
       colorCodeValue.setSelectionRange(0, 99999);
       navigator.clipboard.writeText(colorCodeValue.value);

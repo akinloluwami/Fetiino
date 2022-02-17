@@ -11,6 +11,11 @@
       integrity="sha512-4wFGk961cJS2gpSfzy1vU+R8Q93foZOoGgfEDetiClOqNvggdtnRpdCsAgfm8VU9mKkv2unla8RBYwA6hoFwqg=="
       crossorigin="anonymous"
     />
+    <link
+      href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <title>Fetiino - Extract colors from image</title>
   </head>
   <body>
@@ -132,39 +137,15 @@
       </div>
       <div class="main">
         <h2>Extract Colors From Image</h2>
-        <input type="file" class="upload_input" accept="image/*" />
-        <!-- <button>
-          Generate new palette<i class="fa fa-sparkles new_palette"></i>
-        </button> -->
+        <div class="upload_btn_wrapper">
+          <button class="btn">
+            <i class="fa fa-upload"></i> Upload a file
+          </button>
+          <input type="file" class="upload_input" accept="image/*" />
+        </div>
         <div class="upload_file">
           <img alt="" class="uploaded_image" />
         </div>
-        <!--div class="settings">
-          <h3>Settings</h3>
-          <div class="setting_container">
-            <div class="number_of_pallete">
-              <h4>Number of Palette</h4>
-              <input
-                type="range"
-                name=""
-                id=""
-                min="5"
-                max="20"
-                value="7"
-                class="range_slider"
-              />
-            </div>
-            <div class="color_format">
-              <h4>Color format</h4>
-              <input type="radio" name="color-format" id="" />RGB
-              <input type="radio" name="color-format" id="" />HEX
-            </div>
-            <div class="preview_dominant_color">
-              <h4>Adapt Dominant Color To Ui</h4>
-              <input type="checkbox" name="" id="" />
-            </div>
-          </div>
-        </div-->
       </div>
       <div class="right_sidebar">
         <div class="default">
@@ -184,6 +165,7 @@
           </div>
           <div class="color_palette">
             <h3>Color Palette</h3>
+            <div class="color_palette_container"></div>
           </div>
           <div class="buttons">
             <button class="export_palette">
@@ -198,7 +180,11 @@
     </div>
     <script type="text/javascript" src="../libraries/nameThatColor.js"></script>
     <script src="../libraries/colorThief.umd.js"></script>
-    <!-- <script src="./libraries/reimg.js"></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/save-svg-as-png/1.4.17/saveSvgAsPng.js"
+      integrity="sha512-eROF+rLuEUiVuYGmMqhsT8/OwSLcVw5RLjhhJrWLTznvDcwG0WtXrV6w7Ko4Nw7LyWzDZOGlQjfzQd7kUYLQcQ=="
+      crossorigin="anonymous"
+    ></script>
     <script src="../js/colorwify.js"></script>
   </body>
 </html>

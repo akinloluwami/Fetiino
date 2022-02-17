@@ -10,7 +10,7 @@
       integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
       crossorigin="anonymous"
     />
-    <title>Fetiino - Color Format Converter</title>
+    <title>Fetiino - Color Picker</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css"
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../styles/style.css" />
   </head>
   <body>
-    <div class="converter">
+    <div class="color_picker">
       <div class="left_sidebar">
         <div class="logo">
           <h3>Fetiino</h3>
@@ -84,36 +84,30 @@
         </div>
       </div>
       <div class="main">
-        <div class="box"></div>
-        <h2>Color Format Converter</h2>
-        <div class="input_container">
-          <div class="color_box"></div>
-          <input
-            type="text"
-            class="color_code_input"
-            placeholder="Enter color code (HEX, RGB, HSL, CMYK)"
-          />
-        </div>
-        <div class="results">
-          <div class="result_card rgb">
-            <h3>RGB</h3>
-            <input type="text" readonly />
-            <i class="fa fa-clone"></i>
-          </div>
-          <div class="result_card cmyk">
-            <h3>CMYK</h3>
-            <input type="text" readonly />
-            <i class="fa fa-clone"></i>
-          </div>
-          <div class="result_card hsl">
-            <h3>HSL</h3>
-            <input type="text" readonly />
-            <i class="fa fa-clone"></i>
-          </div>
-          <div class="result_card hex">
-            <h3>HEX</h3>
-            <input type="text" readonly />
-            <i class="fa fa-clone"></i>
+        <h2>Color Picker</h2>
+        <div class="main_content">
+          <div class="color_wheel"></div>
+          <div class="results">
+            <div class="result_card rgb">
+              <h3>RGB</h3>
+              <input type="text" readonly />
+              <i class="fa fa-clone"></i>
+            </div>
+            <div class="result_card cmyk">
+              <h3>CMYK</h3>
+              <input type="text" readonly />
+              <i class="fa fa-clone"></i>
+            </div>
+            <div class="result_card hsl">
+              <h3>HSL</h3>
+              <input type="text" readonly />
+              <i class="fa fa-clone"></i>
+            </div>
+            <div class="result_card hex">
+              <h3>HEX</h3>
+              <input type="text" readonly />
+              <i class="fa fa-clone"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -121,9 +115,9 @@
 
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
     <script src="../libraries/w3Color.js"></script>
     <script src="../libraries/nameThatColor.js"></script>
-    <script src="../js/converter.js"></script>
+    <script src="../js/colorPicker.js"></script>
   </body>
 </html>

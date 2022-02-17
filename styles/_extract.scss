@@ -345,28 +345,36 @@
       text-align: left;
       width: 90%;
     }
-    .settings {
-      margin-bottom: 20px;
-      display: flex;
-      width: 90%;
-      flex-direction: column;
-      h3 {
-        font-weight: 500;
-        font-size: 1.5rem;
+    .upload_btn_wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      margin: 25px;
+      .btn {
+        border: none;
+        color: #fff;
+        background-color: red;
+        padding: 5px 20px;
+        border-radius: 7px;
+        font-size: 15px;
       }
-      .settings_container {
+      input[type="file"] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer;
       }
-    }
-    .upload_input {
     }
     .upload_file {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 80%;
-      height: 50vh;
-      //   background-color: rgba(255, 0, 0, 0.288);
+      height: 70vh;
       border-radius: 0.8rem;
+      background-color: #fff;
       img {
         max-width: 100%;
         max-height: 100%;
@@ -431,7 +439,7 @@
               display: none;
             }
             input {
-              color: red;
+              color: #fff;
               font-weight: 500;
               font-size: 0.9rem;
               outline: none;
@@ -455,60 +463,61 @@
       }
       .color_palette {
         width: 100%;
-        margin-bottom: 20px;
-        max-height: 350px;
-        overflow-y: scroll;
-        &::-webkit-scrollbar-thumb {
-          background-color: red;
-        }
-        //removing scrollbar
-        &::-webkit-scrollbar {
-          width: 0px;
-          background: transparent;
-        }
         h3 {
           position: sticky;
           top: 0;
           background-color: #fff;
           width: 100%;
         }
-        .color {
+        .color_palette_container {
           width: 100%;
-          height: 3rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          .color_palette_code_and_copy_button {
+          // margin-bottom: 20px;
+          max-height: 350px;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+          }
+          .color {
+            width: 100%;
+            height: 3rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 90%;
-            margin: auto;
-            .copy_copied {
-              background-color: red;
-              color: #fff;
-              border-radius: 10px;
-              padding: 2px;
-              text-align: center;
-              width: 100px;
-              margin-right: 2px;
-              display: none;
-            }
-            input {
-              color: #fff;
-              font-weight: 500;
-              font-size: 0.9rem;
-              outline: none;
-              border: none;
-              background-color: transparent;
-              pointer-events: none;
-              &::selection {
-                background: transparent;
+            background-color: red;
+            border: 1px solid #fff;
+            .color_palette_code_and_copy_button {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 90%;
+              margin: auto;
+              .copy_copied {
+                background-color: red;
+                color: #fff;
+                border-radius: 10px;
+                padding: 2px;
+                text-align: center;
+                width: 100px;
+                margin-right: 2px;
+                display: none;
               }
-            }
-            i {
-              color: #fff;
-              cursor: pointer;
+              input {
+                color: #fff;
+                font-weight: 500;
+                font-size: 0.9rem;
+                outline: none;
+                border: none;
+                background-color: transparent;
+                pointer-events: none;
+                &::selection {
+                  background: transparent;
+                }
+              }
+              i {
+                color: #fff;
+                cursor: pointer;
+              }
             }
           }
         }
