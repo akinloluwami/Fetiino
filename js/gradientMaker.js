@@ -35,7 +35,7 @@ function rotatePointer(e) {
     radians = Math.atan2(mouseX - centerX, mouseY - centerY),
     degrees = radians * (180 / Math.PI) * -1 + 180;
   pointer.style.transform = "rotate(" + degrees + "deg)";
-  angleValue.value = `${Math.round(degrees)}°`;
+  angleValue.value = `${Math.round(degrees)}`;
 }
 
 angleCircle.addEventListener("mousemove", rotatePointer);
@@ -49,23 +49,10 @@ let gradientString = `linear-gradient(${45}deg, ${firstColorValue.value}, ${
 mainBg.style.backgroundImage = gradientString;
 pointer.style.transform = `rotate(${angle}deg)`;
 
-// firstColorValue.addEventListener("input", (e) => {
-//   const getAngle = angleValue.value;
-//   gradientString = `linear-gradient(${getAngle}deg, ${e.target.value}, ${secondColorValue.value})`;
-//   firstColorBox.style.backgroundColor = e.target.value;
-//   mainBg.style.backgroundImage = gradientString;
-// });
-
-// secondColorValue.addEventListener("input", (e) => {
-//   const getAngle = angleValue.value;
-//   const newgradientString = `linear-gradient(${getAngle}deg, ${firstColorValue}, ${e.target.value})`;
-//   secondColorBox.style.backgroundColor = e.target.value;
-//   mainBg.style.backgroundImage = newgradientString;
-// });
-
-function changeGradient(colorOne, colorTwo) {
+function changeGradient(colorOne, colorTwo, angle) {
   gradientString = `linear-gradient(${angle}deg, ${colorOne}, ${colorTwo})`;
   mainBg.style.backgroundImage = gradientString;
+  console.log(gradientString);
 }
 
 firstColorValue.addEventListener("input", (e) => {
@@ -76,17 +63,25 @@ secondColorValue.addEventListener("input", (e) => {
   changeGradient(firstColorValue.value, e.target.value, angleValue.value);
   secondColorBox.style.backgroundColor = e.target.value;
 });
-
-function randomGradient() {
-  firstColorValue.value = randomColor({});
-  secondColorValue.value = randomColor({});
-  firstColorBox.style.backgroundColor = firstColorValue.value;
-  secondColorBox.style.backgroundColor = secondColorValue.value;
+angleCircle.addEventListener("mousemove", () => {
   changeGradient(
     firstColorValue.value,
     secondColorValue.value,
     angleValue.value
   );
+});
+function randomGradient() {
+  firstColorValue.value = randomColor({});
+  secondColorValue.value = randomColor({});
+  firstColorBox.style.backgroundColor = firstColorValue.value;
+  secondColorBox.style.backgroundColor = secondColorValue.value;
+  const randomAngle = Math.round(Math.random() * 360);
+
+  changeGradient(firstColorValue.value, secondColorValue.value, randomAngle);
+
+  angleValue.value = randomAngle;
 }
 
 randomBtn.addEventListener("click", randomGradient);
+
+console.log();
