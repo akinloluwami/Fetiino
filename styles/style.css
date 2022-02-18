@@ -2472,4 +2472,313 @@
 .IroSlider {
   display: block;
 }
+
+.gradient_maker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.gradient_maker .left_sidebar {
+  width: 20%;
+  background-color: #fff;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.gradient_maker .left_sidebar .logo {
+  position: relative;
+  margin: 20px 0;
+}
+
+.gradient_maker .left_sidebar .logo .dot {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 100%;
+  position: absolute;
+  top: 2px;
+  right: -9px;
+}
+
+.gradient_maker .left_sidebar .links .navlinks {
+  list-style: none;
+}
+
+.gradient_maker .left_sidebar .links .navlinks li {
+  margin: 15px 0;
+}
+
+.gradient_maker .left_sidebar .links .navlinks li small sup {
+  background-color: red;
+  color: #fff;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.gradient_maker .left_sidebar .links .navlinks li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.gradient_maker .left_sidebar .links .navlinks li a i {
+  color: red;
+  margin-right: 5px;
+}
+
+.gradient_maker .left_sidebar .coming_soon {
+  background-color: #f6f9fe;
+  width: 70%;
+  height: 200px;
+  border-radius: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+}
+
+.gradient_maker .left_sidebar .coming_soon .emoji {
+  background-color: rgba(255, 0, 0, 0.288);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+.gradient_maker .left_sidebar .coming_soon .emoji img {
+  width: 50px;
+}
+
+.gradient_maker .left_sidebar .coming_soon p {
+  font-size: 0.8rem;
+  color: #000;
+  text-align: center;
+}
+
+.gradient_maker .left_sidebar .coming_soon button {
+  width: 80%;
+  height: 2rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  background-color: red;
+}
+
+.gradient_maker .left_sidebar .contribute {
+  margin-bottom: 20px;
+}
+
+.gradient_maker .left_sidebar .contribute a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.8rem;
+}
+
+.gradient_maker .left_sidebar .contribute a sup {
+  background-color: red;
+  color: #fff;
+  padding: 2px;
+  border-radius: 10px;
+  font-size: 0.5rem;
+}
+
+.gradient_maker .main {
+  width: 80%;
+  background: #5c40d7;
+  background: linear-gradient(71deg, #5c40d7 0%, #e93347 100%);
+  color: #fff;
+  height: 100%;
+  position: relative;
+}
+
+.gradient_maker .main .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.gradient_maker .main .top .random_btn {
+  outline: none;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+}
+
+.gradient_maker .main .settings {
+  position: absolute;
+  height: 30vh;
+  width: 100%;
+  padding: 2%;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.gradient_maker .main .settings .colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.gradient_maker .main .settings .colors .color {
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gradient_maker .main .settings .colors .color .box {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  margin-right: 10px;
+  border-radius: 6px;
+}
+
+.gradient_maker .main .settings .colors .color input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  height: 35px;
+}
+
+.gradient_maker .main .settings .type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.gradient_maker .main .settings .type .type_btn {
+  padding: 5px;
+  height: 35px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.gradient_maker .main .settings .type .type_btn i {
+  margin-right: 5px;
+}
+
+.gradient_maker .main .settings .angle .angle_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gradient_maker .main .settings .angle .angle_container input {
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.gradient_maker .main .settings .angle .angle_container .angle_circle {
+  width: 65px;
+  height: 65px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5px;
+}
+
+.gradient_maker .main .settings .angle .angle_container .angle_circle .angle_circle_inner {
+  background-color: transparent;
+  height: 100%;
+  width: 5px;
+}
+
+.gradient_maker .main .settings .angle .angle_container .angle_circle .angle_circle_inner .pointer_dot {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 100%;
+}
 /*# sourceMappingURL=style.css.map */

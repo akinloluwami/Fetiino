@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css"
+      integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g=="
+      crossorigin="anonymous"
+    />
+    <title>Fetiino - Gradient Maker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.css"
+      integrity="sha512-4wFGk961cJS2gpSfzy1vU+R8Q93foZOoGgfEDetiClOqNvggdtnRpdCsAgfm8VU9mKkv2unla8RBYwA6hoFwqg=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <div class="gradient_maker">
+      <div class="left_sidebar">
+        <div class="logo">
+          <h3>Fetiino</h3>
+          <div class="dot"></div>
+        </div>
+        <div class="links">
+          <ul class="navlinks">
+            <li>
+              <a href="/extract/"
+                ><i class="fa fa-images"></i>Palette From Image</a
+              >
+            </li>
+            <li>
+              <a href="/generate/"
+                ><i class="fa fa-palette"></i>Generate Palettes</a
+              >
+            </li>
+            <li>
+              <a href="/color-picker"
+                ><i class="fa fa-eye-dropper"></i>Color Picker</a
+              >
+            </li>
+            <li>
+              <a href="/converter"
+                ><i class="fa fa-sync-alt"></i>Color Format Converter</a
+              >
+            </li>
+            <li>
+              <a href="/gradient-maker"
+                ><i class="fa fa-paint-brush"></i>Gradient Maker</a
+              >
+            </li>
+
+            <li>
+              <a href="/saved-palettes/"
+                ><i class="fa fa-heart"></i>Saved Palletes
+              </a>
+            </li>
+            <!-- Brand colors -->
+          </ul>
+        </div>
+        <div class="coming_soon">
+          <div class="emoji">
+            <img
+              src="https://cliply.co/wp-content/uploads/2021/03/392103580_BLUSHING_EMOJI_400.png"
+              alt=""
+            />
+          </div>
+          <p>
+            Create, save, edit, share and do more with your colors. Android and
+            iOS app, Chrome extension. All Coming Soon...
+          </p>
+          <button>Join The Waitlist</button>
+        </div>
+        <div class="contribute">
+          <a href="#">
+            Contribute On GitHub
+            <i class="fab fa-github"></i>
+            <sup>Open-Source</sup>
+          </a>
+        </div>
+      </div>
+      <div class="main">
+        <div class="top">
+            <h2>Gradient Maker</h2>
+        <button class="random_btn"> <i class="fa fa-random"></i> Random</button>
+        </div>
+        <div class="settings">
+          <div class="colors">
+            <h2>Colors</h2>
+            <div class="color first_color">
+              <div class="box"></div>
+              <input type="text" />
+            </div>
+            <div class="color second_color">
+              <div class="box"></div>
+              <input type="text" />
+            </div>
+          </div>
+          <div class="type">
+            <h2>Type</h2>
+            <button class="type_btn">
+              <i class="fas fa-grip-lines"></i>Linear
+            </button>
+            <button class="type_btn">
+              <i class="fas fa-dot-circle"></i>Radial
+            </button>
+          </div>
+          <div class="angle">
+            <h2>Angle</h2>
+            <div class="angle_container">
+                <input type="text" class="angle_value" value="90"/>
+                <div class="angle_circle">
+                    <div class="angle_circle_inner">
+                        <div class="pointer_dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <script src="../libraries/w3Color.js"></script>
+    <script src="../libraries/nameThatColor.js"></script>
+    <script src="../libraries/randomColor.js"></script>
+    <script src="../js/gradientMaker.js"></script>
+  </body>
+</html>

@@ -1,0 +1,225 @@
+.gradient_maker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  .left_sidebar {
+    width: 20%;
+    background-color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    .logo {
+      position: relative;
+      margin: 20px 0;
+      .dot {
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        border-radius: 100%;
+        position: absolute;
+        top: 2px;
+        right: -9px;
+      }
+    }
+    .links {
+      .navlinks {
+        list-style: none;
+        li {
+          margin: 15px 0;
+          small {
+            sup {
+              background-color: red;
+              color: #fff;
+              padding: 2px;
+              border-radius: 10px;
+            }
+          }
+          a {
+            text-decoration: none;
+            color: #000;
+            font-size: 0.9rem;
+            font-weight: 500;
+            i {
+              color: red;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+    .coming_soon {
+      background-color: #f6f9fe;
+      width: 70%;
+      //   margin-bottom: 100px;
+      height: 200px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      padding: 20px;
+      .emoji {
+        background-color: rgba(255, 0, 0, 0.288);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        img {
+          width: 50px;
+        }
+      }
+      p {
+        font-size: 0.8rem;
+        color: #000;
+        text-align: center;
+      }
+      button {
+        width: 80%;
+        height: 2rem;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        color: #fff;
+        background-color: red;
+      }
+    }
+
+    .contribute {
+      margin-bottom: 20px;
+      a {
+        text-decoration: none;
+        color: #000;
+        font-size: 0.8rem;
+        sup {
+          background-color: red;
+          color: #fff;
+          padding: 2px;
+          border-radius: 10px;
+          font-size: 0.5rem;
+        }
+      }
+    }
+  }
+  .main {
+    width: 80%;
+    background: rgb(92, 64, 215);
+    background: linear-gradient(
+      71deg,
+      rgba(92, 64, 215, 1) 0%,
+      rgba(233, 51, 71, 1) 100%
+    );
+    color: #fff;
+    height: 100%;
+    position: relative;
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      margin: 0 auto;
+      .random_btn {
+        outline: none;
+        border: none;
+        background-color: #fff;
+        color: #000;
+        font-size: 0.8rem;
+        padding: 5px 10px;
+      }
+    }
+    .settings {
+      position: absolute;
+      height: 30vh;
+      width: 100%;
+      padding: 2%;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.5);
+      //   margin: auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      .colors {
+        display: flex;
+        flex-direction: column;
+        .color {
+          margin: 10px 0;
+          display: flex;
+          align-items: center;
+          .box {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            margin-right: 10px;
+            border-radius: 6px;
+          }
+          input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            height: 35px;
+          }
+        }
+      }
+      .type {
+        display: flex;
+        flex-direction: column;
+        .type_btn {
+          padding: 5px;
+          //   margin: 5px 0;
+          height: 35px;
+          border: none;
+          outline: none;
+          cursor: pointer;
+
+          i {
+            margin-right: 5px;
+          }
+        }
+      }
+      .angle {
+        .angle_container {
+          display: flex;
+          align-items: center;
+          input {
+            width: 50px;
+            height: 40px;
+            text-align: center;
+            border: none;
+            outline: none;
+            padding: 5px;
+            border-radius: 6px;
+            margin-right: 10px;
+          }
+          .angle_circle {
+            width: 65px;
+            height: 65px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            .angle_circle_inner {
+              background-color: transparent;
+              height: 100%;
+              width: 5px;
+              .pointer_dot {
+                width: 10px;
+                height: 10px;
+                background-color: #fff;
+                border-radius: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
