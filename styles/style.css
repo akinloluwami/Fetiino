@@ -2721,6 +2721,7 @@
 
 .gradient_maker .main .settings .type .type_btn {
   padding: 5px;
+  margin: 5px 0;
   height: 35px;
   border: none;
   outline: none;

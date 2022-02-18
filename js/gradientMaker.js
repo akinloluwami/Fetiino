@@ -9,11 +9,18 @@ let secondColorValue = document.querySelector(".second_color input");
 const firstColorBox = document.querySelector(".first_color .box");
 const secondColorBox = document.querySelector(".second_color .box");
 const randomBtn = document.querySelector(".random_btn");
+const linearBtn = document.querySelector(".linear_btn");
+const radialBtn = document.querySelector(".radial_btn");
 
 firstColorValue.value = randomColor({});
 secondColorValue.value = randomColor({});
 firstColorBox.style.backgroundColor = firstColorValue.value;
 secondColorBox.style.backgroundColor = secondColorValue.value;
+
+linearBtn.style.color = "#fff";
+linearBtn.style.backgroundColor = "red";
+radialBtn.style.color = "red";
+radialBtn.style.backgroundColor = "#fff";
 
 (pointerBox = pointer.getBoundingClientRect()),
   (centerPoint = window.getComputedStyle(pointer).transformOrigin),
@@ -76,12 +83,48 @@ function randomGradient() {
   firstColorBox.style.backgroundColor = firstColorValue.value;
   secondColorBox.style.backgroundColor = secondColorValue.value;
   const randomAngle = Math.round(Math.random() * 360);
+  linearBtn.style.color = "#fff";
+  linearBtn.style.backgroundColor = "red";
+  radialBtn.style.color = "red";
+  radialBtn.style.backgroundColor = "#fff";
+  angleCircle.style.pointerEvents = "auto";
 
   changeGradient(firstColorValue.value, secondColorValue.value, randomAngle);
 
   angleValue.value = randomAngle;
 }
 
+function radialGradient(colorOne, colorTwo) {
+  gradientString = `radial-gradient(circle, ${colorOne}, ${colorTwo})`;
+  mainBg.style.backgroundImage = gradientString;
+  console.log(gradientString);
+}
+
 randomBtn.addEventListener("click", randomGradient);
 
-console.log();
+function linearGradient() {
+  changeGradient(
+    firstColorValue.value,
+    secondColorValue.value,
+    angleValue.value
+  );
+}
+
+linearBtn.addEventListener("click", () => {
+  linearGradient();
+  angleCircle.addEventListener("mousemove", rotatePointer);
+  linearBtn.style.color = "#fff";
+  linearBtn.style.backgroundColor = "red";
+  radialBtn.style.color = "red";
+  radialBtn.style.backgroundColor = "#fff";
+  angleCircle.style.pointerEvents = "auto";
+});
+
+radialBtn.addEventListener("click", () => {
+  angleCircle.style.pointerEvents = "none";
+  radialGradient(firstColorValue.value, secondColorValue.value);
+  radialBtn.style.color = "#fff";
+  radialBtn.style.backgroundColor = "red";
+  linearBtn.style.color = "red";
+  linearBtn.style.backgroundColor = "#fff";
+});
