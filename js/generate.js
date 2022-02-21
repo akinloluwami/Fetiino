@@ -47,7 +47,6 @@ function generate() {
   for (let i = 0; i < 5; i++) {
     colorArr.push(randomColor({ luminosity: "random", hue: "random" }));
   }
-  //
   colorArr.forEach((color) => {
     const colorDiv = document.createElement("div");
     colorDiv.classList.add("color");

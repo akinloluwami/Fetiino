@@ -33,12 +33,12 @@ const defaultPopUpRightContent = document.querySelector(
 const exportAsImageButton = document.querySelector(".export_as_image");
 const imageResult = document.querySelector(".image_result");
 const savePaletteButton = document.querySelector(".save_palette");
-
-//disable default ctrl+s behaviour
+const comingSoon = document.querySelector(".coming_soon");
+const exportAsReactComponentButton = document.querySelector(".react_export");
+const embedHtml5 = document.querySelector(".embed_html5");
 document.addEventListener("keydown", (e) => {
   e.ctrlKey && e.key === "s" ? e.preventDefault() : null;
 });
-//disable default ctrl+e behaviour
 document.addEventListener("keydown", (e) => {
   e.ctrlKey && e.key === "e" ? e.preventDefault() : null;
 });
@@ -51,6 +51,11 @@ exportAsCssButton.addEventListener("click", () => {
   exportAsCssButton.style.color = "#fff";
   exportAsImageButton.style.backgroundColor = "transparent";
   exportAsImageButton.style.color = "#000";
+  exportAsReactComponentButton.style.backgroundColor = "transparent";
+  exportAsReactComponentButton.style.color = "#000";
+  comingSoon.style.display = "none";
+  embedHtml5.style.backgroundColor = "transparent";
+  embedHtml5.style.color = "#000";
 });
 exportAsImageButton.addEventListener("click", () => {
   imageResult.style.display = "block";
@@ -60,12 +65,43 @@ exportAsImageButton.addEventListener("click", () => {
   exportAsImageButton.style.color = "#fff";
   exportAsCssButton.style.backgroundColor = "transparent";
   exportAsCssButton.style.color = "#000";
+  exportAsReactComponentButton.style.backgroundColor = "transparent";
+  exportAsReactComponentButton.style.color = "#000";
+  comingSoon.style.display = "none";
+  embedHtml5.style.backgroundColor = "transparent";
+  embedHtml5.style.color = "#000";
 });
-
+exportAsReactComponentButton.addEventListener("click", () => {
+  comingSoon.style.display = "flex";
+  imageResult.style.display = "none";
+  cssResult.style.display = "none";
+  defaultPopUpRightContent.style.display = "none";
+  exportAsCssButton.style.backgroundColor = "transparent";
+  exportAsCssButton.style.color = "#000";
+  exportAsImageButton.style.backgroundColor = "transparent";
+  exportAsImageButton.style.color = "#000";
+  exportAsReactComponentButton.style.backgroundColor = "red";
+  exportAsReactComponentButton.style.color = "#fff";
+  embedHtml5.style.backgroundColor = "transparent";
+  embedHtml5.style.color = "#000";
+});
+embedHtml5.addEventListener("click", () => {
+  comingSoon.style.display = "flex";
+  imageResult.style.display = "none";
+  cssResult.style.display = "none";
+  defaultPopUpRightContent.style.display = "none";
+  exportAsCssButton.style.backgroundColor = "transparent";
+  exportAsCssButton.style.color = "#000";
+  exportAsImageButton.style.backgroundColor = "transparent";
+  exportAsImageButton.style.color = "#000";
+  exportAsReactComponentButton.style.backgroundColor = "transparent";
+  exportAsReactComponentButton.style.color = "#000";
+  embedHtml5.style.backgroundColor = "red";
+  embedHtml5.style.color = "#fff";
+});
 closePopUpButton.addEventListener("click", () => {
   popUp.classList.remove("active");
   leftSidebar.style.pointerEvents = "auto";
-  // rightSidebar.style.pointerEvents = "auto";
   mainBg.style.pointerEvents = "auto";
 });
 
@@ -110,9 +146,14 @@ const loadFile = function (e) {
 
       /*************Get color name****************/
       const nameColor = ntc.name(hexValue);
-      n_rgb = nameColor[0]; // RGB value of closest match
-      n_name = nameColor[1]; // Text string: Color name
-      n_exactmatch = nameColor[2]; // True if exact color match
+      if (checkLuminance(hexValue) === true) {
+        dominantColorCode.style.color = "#fff";
+      } else {
+        dominantColorCode.style.color = "#000";
+      }
+      n_rgb = nameColor[0];
+      n_name = nameColor[1];
+      n_exactmatch = nameColor[2];
       console.log(`%c  ${n_name}`, `background: ${n_rgb}; color: #fff`);
       /******************************************/
 
@@ -176,9 +217,9 @@ const loadFile = function (e) {
         colorPaletteCode.value = hexValue;
 
         if (checkLuminance(hexValue) === true) {
-          colorPaletteCode.style.color = "white";
+          colorPaletteCode.style.color = "#fff";
         } else {
-          colorPaletteCode.style.color = "black";
+          colorPaletteCode.style.color = "#000";
         }
 
         function copyColorCode() {
@@ -229,15 +270,114 @@ const loadFile = function (e) {
           const paletteObj = {
             name: paletteName,
             colors: colorsArray,
+            cssCode: cssOutput,
           };
-          const palette = JSON.parse(localStorage.getItem("palettes"));
-          if (palette) {
-            palette.push(paletteObj);
-            localStorage.setItem("palettes", JSON.stringify(palette));
-          }
+          const palette = JSON.parse(localStorage.getItem("palettes")) || [];
+          palette.push(paletteObj);
+          localStorage.setItem("palettes", JSON.stringify(palette));
         }
       }
       savePaletteButton.addEventListener("click", savePalette);
+
+      const singleColorValues = [
+        {
+          colorName: colorNames[0].toLowerCase(),
+          colorHexCode: colorHexValues[0],
+          colorRgbCode: colorRgbValues[0],
+        },
+        {
+          colorName: colorNames[1].toLowerCase(),
+          colorHexCode: colorHexValues[1],
+        },
+        {
+          colorName: colorNames[2].toLowerCase(),
+          colorHexCode: colorHexValues[2],
+        },
+        {
+          colorName: colorNames[3].toLowerCase(),
+          colorHexCode: colorHexValues[3],
+        },
+        {
+          colorName: colorNames[4].toLowerCase(),
+          colorHexCode: colorHexValues[4],
+        },
+        {
+          colorName: colorNames[5].toLowerCase(),
+          colorHexCode: colorHexValues[5],
+        },
+        {
+          colorName: colorNames[6].toLowerCase(),
+          colorHexCode: colorHexValues[6],
+        },
+      ];
+
+      const cssOutput = `
+      /* Generated with ❤️ by Fetiino */
+
+      /*CSS HEX Values*/
+    --${singleColorValues[0].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[0].colorHexCode
+      };
+
+    --${singleColorValues[1].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[1].colorHexCode
+      };
+
+    --${singleColorValues[2].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[2].colorHexCode
+      };
+
+    --${singleColorValues[3].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[3].colorHexCode
+      };
+
+    --${singleColorValues[4].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[4].colorHexCode
+      };
+
+    --${singleColorValues[5].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[5].colorHexCode
+      };
+
+    --${singleColorValues[6].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[6].colorHexCode
+      };
+
+
+      /*SCSS HEX Values*/
+
+    $${singleColorValues[0].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[0].colorHexCode
+      };
+
+    $${singleColorValues[1].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[1].colorHexCode
+      };
+
+    $${singleColorValues[2].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[2].colorHexCode
+      };
+
+    $${singleColorValues[3].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[3].colorHexCode
+      };
+
+    $${singleColorValues[4].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[4].colorHexCode
+      };
+
+    $${singleColorValues[5].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[5].colorHexCode
+      };
+
+    $${singleColorValues[6].colorName.replace(/\s/g, "_")}: ${
+        singleColorValues[6].colorHexCode
+      };
+
+    `;
+
+      cssCode.textContent = cssOutput;
+
       //copy css code to clipboard
       function copyCssCode() {
         cssCode.select();
@@ -272,7 +412,7 @@ const loadFile = function (e) {
         document.body.removeChild(element);
       });
       const svgImage = `
-        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1034.9">
+        <svg id="svg-element-id" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1034.9">
         <defs>
     <style>
       .cls-1, .cls-9 {
@@ -319,9 +459,7 @@ const loadFile = function (e) {
   </defs>
   <rect class="cls-1" y="924" width="1024" height="100"/>
   <g>
-    <text class="cls-2" transform="translate(24.3 995.43)">Colorwify</text>
-    <circle class="cls-3" cx="354.7" cy="951.1" r="8.06"/>
-    <circle class="cls-3" cx="273.45" cy="947.47" r="5.21"/>
+    <text class="cls-2" transform="translate(24.3 995.43)">Fetiino</text>
   </g>
   <rect class="cls-4" width="204.8" height="924"/>
   <rect class="cls-5" x="204.8" width="204.8" height="924"/>
@@ -336,9 +474,13 @@ const loadFile = function (e) {
 </svg>
         `;
 
-      imageResult.innerHTML = svgImage;
-
-      exportAsImageButton.addEventListener("click", () => {});
+      imageResult.innerHTML = `${svgImage}
+      <div class="save_as">
+      <button>
+        <i class="fa fa-download"></i>
+      </button>
+    </div>
+      `;
 
       function exportPalette() {
         popUp.classList.add("active");
@@ -378,5 +520,4 @@ function rgbToHex(r, g, b) {
 }
 /************************************************/
 
-//function makeGradient(){}
 //PWA
