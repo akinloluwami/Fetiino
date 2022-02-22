@@ -176,3 +176,22 @@
 .IroSlider {
   display: block;
 }
+@media screen and (max-width: 768px) {
+  .color_picker {
+    .left_sidebar {
+      display: none;
+    }
+    .main {
+      width: 100%;
+      .main_content {
+        width: 100%;
+        flex-direction: column;
+        .results {
+          .result_card {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

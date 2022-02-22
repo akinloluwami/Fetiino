@@ -20,7 +20,7 @@ function checkLuminance(hexCode) {
 const palette = document.querySelector(".palette");
 const cssHexValues = [];
 const cssColorNames = [];
-const savePaletteBtn = document.querySelector(".fa-heart");
+const savePaletteBtn = document.querySelector(".save_palette_btn");
 const saveCSSButton = document.querySelector(".fa-css3-alt");
 const saveAsImageButton = document.querySelector(".fa-image");
 const generateButton = document.querySelector(".generate_btn");
@@ -45,7 +45,7 @@ function generate() {
   const colorArr = [];
   newArr = colorArr;
   for (let i = 0; i < 5; i++) {
-    colorArr.push(randomColor({ luminosity: "random", hue: "random" }));
+    colorArr.push(randomColor());
   }
   colorArr.forEach((color) => {
     const colorDiv = document.createElement("div");
@@ -98,7 +98,6 @@ document.addEventListener("keydown", (e) => {
       palette.removeChild(palette.firstChild);
     }
     generate();
-    console.log(check);
   }
 });
 generateButton.addEventListener("click", (e) => {
@@ -126,7 +125,7 @@ function makeCSS() {
     };\n`;
   });
   cssOutput = `
-  /* Generated with ❤️ by Colorwify */
+  /* Generated with ❤️ by Fetiino */
   
   /*CSS HEX Values*/
   ${cssString}
@@ -145,7 +144,7 @@ function downloadCss() {
   link.href = cssUrl;
   link.setAttribute(
     "download",
-    `${newLastFive[0].replace(/\s/g, "")}byColorwify.css`
+    `${newLastFive[0].replace(/\s/g, "")}byFetiino.css`
   );
   document.body.appendChild(link);
   link.click();
@@ -158,7 +157,7 @@ saveCSSButton.addEventListener("click", () => {
 });
 document.addEventListener("keydown", (e) => {
   e.preventDefault();
-  if (e.keyCode === 68 && e.ctrlKey) {
+  if (e.key === "d" && e.ctrlKey) {
     makeCSS();
     downloadCss();
   }
@@ -179,11 +178,9 @@ function savePalette() {
     localStorage.setItem("palettes", JSON.stringify(savedPalettes));
   }
 }
-savePaletteBtn.addEventListener("click", () => {
-  savePalette();
-});
 document.addEventListener("keydown", (e) => {
-  if (e.keyCode === 83 && e.ctrlKey) {
+  if (e.key === "s" && e.ctrlKey) {
     savePalette();
   }
 });
+savePaletteBtn.addEventListener("click", savePalette);

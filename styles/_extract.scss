@@ -640,3 +640,33 @@
     }
   }
 }
+@media screen and (max-width: 768px) {
+  .extract {
+    flex-direction: column;
+    .left_sidebar {
+      display: none;
+    }
+    .main {
+      width: 100%;
+    }
+    .right_sidebar {
+      width: 95%;
+      margin: auto;
+
+      .image_loaded {
+        .dominant_color {
+          .dominant {
+            height: 90px;
+          }
+        }
+        .color_palette {
+          .color_palette_container {
+            .color {
+              height: 90px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

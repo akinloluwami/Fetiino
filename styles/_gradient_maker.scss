@@ -118,6 +118,107 @@
     color: #fff;
     height: 100%;
     position: relative;
+    .css_result {
+      color: #000;
+      width: 500px;
+      height: 300px;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      padding: 20px;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      background-color: #fff;
+      border-radius: 10px;
+      display: none;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.5);
+        i {
+          color: red;
+          font-size: 1.5rem;
+        }
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        margin: auto;
+        .toggle_switch {
+          display: flex;
+        }
+      }
+      .css_code {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        textarea {
+          width: 90%;
+          height: 150px;
+          margin: auto;
+          padding: 10px;
+          outline: none;
+          border-radius: 10px;
+          resize: none;
+          font-size: 0.9rem;
+          border: none;
+          &::selection {
+            background: transparent;
+          }
+        }
+      }
+      button {
+        width: 100%;
+        height: 5rem;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        color: #fff;
+        background-color: grey;
+      }
+    }
+    .export_save {
+      position: absolute;
+      //stick to the right side
+      right: 0;
+      top: 30%;
+      button {
+        background-color: #fff;
+        width: 150px;
+        height: 50px;
+        outline: none;
+        border: none;
+        font-size: 1.5rem;
+        border-radius: 10px 0 0 10px;
+        transition: ease-in 0.3s;
+        &:hover {
+          width: 170px;
+          transition: ease-in 0.3s;
+        }
+        i {
+          margin-right: 10px;
+          &.fa-css3-alt {
+            color: #264de4;
+          }
+        }
+      }
+    }
     .top {
       display: flex;
       align-items: center;
@@ -181,6 +282,108 @@
             margin-right: 5px;
           }
         }
+      }
+      .slider_wrapper {
+        position: relative;
+        width: 300px;
+        border-radius: 10px;
+        display: none;
+      }
+      .container {
+        position: relative;
+        width: 100%;
+        height: 100px;
+        margin-top: 30px;
+      }
+      input[type="range"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        outline: none;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        background-color: transparent;
+        pointer-events: none;
+      }
+      .slider-track {
+        width: 100%;
+        height: 5px;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        border-radius: 5px;
+      }
+      input[type="range"]::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        height: 5px;
+      }
+      input[type="range"]::-moz-range-track {
+        -moz-appearance: none;
+        height: 5px;
+      }
+      input[type="range"]::-ms-track {
+        appearance: none;
+        height: 5px;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 1.7em;
+        width: 1.7em;
+        background-color: red;
+        cursor: pointer;
+        margin-top: -9px;
+        pointer-events: auto;
+        border-radius: 50%;
+      }
+      input[type="range"]::-moz-range-thumb {
+        -webkit-appearance: none;
+        height: 1.7em;
+        width: 1.7em;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: red;
+        pointer-events: auto;
+      }
+      input[type="range"]::-ms-thumb {
+        appearance: none;
+        height: 1.7em;
+        width: 1.7em;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: red;
+        pointer-events: auto;
+      }
+      input[type="range"]:active::-webkit-slider-thumb {
+        background-color: #ffffff;
+        border: 3px solid red;
+      }
+      .values {
+        background-color: red;
+        width: 32%;
+        position: relative;
+        margin: auto;
+        padding: 10px 0;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: 500;
+        font-size: 25px;
+      }
+      .values:before {
+        content: "";
+        position: absolute;
+        height: 0;
+        width: 0;
+        border-top: 15px solid red;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        margin: auto;
+        bottom: -14px;
+        left: 0;
+        right: 0;
       }
       .angle {
         .angle_container {

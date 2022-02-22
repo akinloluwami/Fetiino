@@ -272,34 +272,18 @@
 
 @media screen and (max-width: 768px) {
   .fetiino .fetiino_inner .navbar {
-    height: 8vh;
+    height: 50px;
   }
   .fetiino .fetiino_inner .navbar .navlinks {
     display: none;
   }
-  .fetiino .fetiino_inner .hero {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding-top: 0;
-  }
   .fetiino .fetiino_inner .hero .hero_text_content .main_text h1 {
-    font-size: 4.7rem;
+    font-size: 80px;
   }
   .fetiino .fetiino_inner .hero .hero_text_content .wheel_mobile {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 100%;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
   .fetiino .fetiino_inner .hero .hero_text_content .buttons {
     -webkit-box-orient: vertical;
@@ -312,11 +296,21 @@
   }
   .fetiino .fetiino_inner .hero .hero_text_content .buttons button {
     width: 80%;
-    height: 3rem;
-    margin-bottom: 1rem;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 30px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .fetiino .fetiino_inner .hero .hero_text_content .buttons a {
-    font-size: 1.2rem;
+    font-size: 22px;
   }
   .fetiino .fetiino_inner .hero .hero_color_wheel {
     display: none;
@@ -1234,6 +1228,31 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .extract {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .extract .left_sidebar {
+    display: none;
+  }
+  .extract .main {
+    width: 100%;
+  }
+  .extract .right_sidebar {
+    width: 95%;
+    margin: auto;
+  }
+  .extract .right_sidebar .image_loaded .dominant_color .dominant {
+    height: 90px;
+  }
+  .extract .right_sidebar .image_loaded .color_palette .color_palette_container .color {
+    height: 90px;
+  }
+}
+
 .saved_palettes {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1943,6 +1962,40 @@
   color: #000;
 }
 
+@media screen and (max-width: 768px) {
+  .generate .left_sidebar {
+    display: none;
+  }
+  .generate .main {
+    width: 100%;
+    height: 90vh;
+    overflow: none;
+  }
+  .generate .main .palette {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .generate .main .palette .color {
+    width: 100%;
+    height: 25%;
+  }
+  .generate .main .options {
+    position: fixed;
+    height: 5vh;
+    padding: 40px 0;
+  }
+  .generate .main .options p {
+    display: none;
+  }
+  .generate .main .options .generate_btn {
+    width: 80%;
+    height: 50px;
+  }
+}
+
 .converter {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2472,6 +2525,25 @@
   display: block;
 }
 
+@media screen and (max-width: 768px) {
+  .color_picker .left_sidebar {
+    display: none;
+  }
+  .color_picker .main {
+    width: 100%;
+  }
+  .color_picker .main .main_content {
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .color_picker .main .main_content .results .result_card {
+    width: 100%;
+  }
+}
+
 .gradient_maker {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2632,6 +2704,158 @@
   position: relative;
 }
 
+.gradient_maker .main .css_result {
+  color: #000;
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  padding: 20px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 1;
+  background-color: #fff;
+  border-radius: 10px;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.gradient_maker .main .css_result .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 100%;
+  -webkit-box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+.gradient_maker .main .css_result .close i {
+  color: red;
+  font-size: 1.5rem;
+}
+
+.gradient_maker .main .css_result .topbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 95%;
+  margin: auto;
+}
+
+.gradient_maker .main .css_result .topbar .toggle_switch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.gradient_maker .main .css_result .css_code {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.gradient_maker .main .css_result .css_code textarea {
+  width: 90%;
+  height: 150px;
+  margin: auto;
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+  resize: none;
+  font-size: 0.9rem;
+  border: none;
+}
+
+.gradient_maker .main .css_result .css_code textarea::-moz-selection {
+  background: transparent;
+}
+
+.gradient_maker .main .css_result .css_code textarea::selection {
+  background: transparent;
+}
+
+.gradient_maker .main .css_result button {
+  width: 100%;
+  height: 5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  background-color: grey;
+}
+
+.gradient_maker .main .export_save {
+  position: absolute;
+  right: 0;
+  top: 30%;
+}
+
+.gradient_maker .main .export_save button {
+  background-color: #fff;
+  width: 150px;
+  height: 50px;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 10px 0 0 10px;
+  -webkit-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+}
+
+.gradient_maker .main .export_save button:hover {
+  width: 170px;
+  -webkit-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+}
+
+.gradient_maker .main .export_save button i {
+  margin-right: 10px;
+}
+
+.gradient_maker .main .export_save button i.fa-css3-alt {
+  color: #264de4;
+}
+
 .gradient_maker .main .top {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2729,6 +2953,121 @@
 
 .gradient_maker .main .settings .type .type_btn i {
   margin-right: 5px;
+}
+
+.gradient_maker .main .settings .slider_wrapper {
+  position: relative;
+  width: 300px;
+  border-radius: 10px;
+  display: none;
+}
+
+.gradient_maker .main .settings .container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-top: 30px;
+}
+
+.gradient_maker .main .settings input[type="range"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.gradient_maker .main .settings .slider-track {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  border-radius: 5px;
+}
+
+.gradient_maker .main .settings input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 5px;
+}
+
+.gradient_maker .main .settings input[type="range"]::-moz-range-track {
+  -moz-appearance: none;
+  height: 5px;
+}
+
+.gradient_maker .main .settings input[type="range"]::-ms-track {
+  appearance: none;
+  height: 5px;
+}
+
+.gradient_maker .main .settings input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  background-color: red;
+  cursor: pointer;
+  margin-top: -9px;
+  pointer-events: auto;
+  border-radius: 50%;
+}
+
+.gradient_maker .main .settings input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: red;
+  pointer-events: auto;
+}
+
+.gradient_maker .main .settings input[type="range"]::-ms-thumb {
+  appearance: none;
+  height: 1.7em;
+  width: 1.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: red;
+  pointer-events: auto;
+}
+
+.gradient_maker .main .settings input[type="range"]:active::-webkit-slider-thumb {
+  background-color: #ffffff;
+  border: 3px solid red;
+}
+
+.gradient_maker .main .settings .values {
+  background-color: red;
+  width: 32%;
+  position: relative;
+  margin: auto;
+  padding: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+.gradient_maker .main .settings .values:before {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-top: 15px solid red;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  margin: auto;
+  bottom: -14px;
+  left: 0;
+  right: 0;
 }
 
 .gradient_maker .main .settings .angle .angle_container {

@@ -185,42 +185,39 @@
   }
 }
 
-//add mobile media query
 @media screen and (max-width: 768px) {
   .fetiino {
     .fetiino_inner {
       .navbar {
-        height: 8vh;
+        height: 50px;
         .navlinks {
           display: none;
         }
       }
       .hero {
-        align-items: center;
-        justify-content: center;
-        padding-top: 0;
         .hero_text_content {
           .main_text {
             h1 {
-              font-size: 4.7rem;
+              font-size: 80px;
             }
           }
           .wheel_mobile {
             display: flex;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
           }
           .buttons {
             flex-direction: column;
             align-items: flex-start;
             button {
               width: 80%;
-              height: 3rem;
-              margin-bottom: 1rem;
+              height: 40px;
+              margin-bottom: 10px;
+              padding: 30px 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
             a {
-              font-size: 1.2rem;
+              font-size: 22px;
             }
           }
         }
