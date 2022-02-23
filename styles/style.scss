@@ -4,135 +4,130 @@
   padding: 0;
   font-family: "Poppins";
 }
+html {
+  font-size: 16px;
+}
 .fetiino {
   font-family: "Poppins";
-  position: relative;
-  .fetiino_inner {
-    width: 95%;
-    margin: auto;
-    .navbar {
-      width: 100%;
-      height: 10vh;
-      background-color: transparent;
-      position: fixed;
-      top: 0;
-      left: 0;
+
+  .navbar {
+    width: 100%;
+    height: 10vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      margin-left: 2.5%;
+    }
+    .navlinks {
+      display: flex;
+      list-style: none;
+      li {
+        margin: 0 10px;
+        a {
+          text-decoration: none;
+          color: #796f6f;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+      }
+    }
+    .icons {
+      margin-right: 2.5%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      .logo {
-        margin-left: 2.5%;
-      }
-      .navlinks {
-        display: flex;
-        list-style: none;
-        li {
-          margin: 0 10px;
-          a {
-            text-decoration: none;
-            color: #796f6f;
-            font-size: 0.9rem;
-            font-weight: 500;
-          }
+      a {
+        font-size: 1.2rem;
+        font-weight: 500;
+        i {
+          color: red;
+          margin-right: 15px;
         }
       }
-      .icons {
-        margin-right: 2.5%;
-        display: flex;
-        align-items: center;
-        a {
-          font-size: 1.2rem;
-          font-weight: 500;
-          i {
-            color: red;
-            margin-right: 15px;
+      .color_bars {
+        width: 40px;
+        height: 40px;
+        .color_bar {
+          $radius: 7px;
+          width: 100%;
+          height: 8px;
+          &:first-child {
+            border-radius: $radius $radius 0 0;
           }
-        }
-        .color_bars {
-          width: 40px;
-          height: 40px;
-          .color_bar {
-            $radius: 7px;
-            width: 100%;
-            height: 8px;
-            &:first-child {
-              border-radius: $radius $radius 0 0;
-            }
-            &:last-child {
-              border-radius: 0 0 $radius $radius;
-            }
+          &:last-child {
+            border-radius: 0 0 $radius $radius;
           }
         }
       }
     }
-    .hero {
-      height: 100vh;
-      width: 85%;
-      margin: auto;
-      display: flex;
-      padding-top: 2rem;
-      align-items: center;
-      justify-content: space-between;
-      .hero_text_content {
-        .main_text {
-          display: flex;
-          align-items: flex-start;
-          flex-direction: column;
-          justify-content: center;
-          h1 {
-            font-size: 6rem;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 0.5rem;
-            line-height: 1;
-            &:last-child {
-              color: red;
-            }
+  }
+  .hero {
+    height: 90vh;
+    width: 85%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .hero_text_content {
+      .main_text {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        h1 {
+          font-size: 6rem;
+          font-weight: 600;
+          color: #000;
+          margin-bottom: 0.5rem;
+          line-height: 1;
+          &:last-child {
+            color: red;
           }
         }
-        p {
+      }
+      p {
+        font-size: 1rem;
+        font-weight: 500;
+        width: 70%;
+        color: #796f6f;
+        border-left: 3px solid red;
+        padding-left: 10px;
+        margin: 1rem 0;
+        a {
+          text-decoration: none;
+          color: red;
+          font-weight: 600;
+        }
+      }
+      .wheel_mobile {
+        display: none;
+      }
+      .buttons {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin: 2rem 0;
+        button {
+          width: 30%;
+          height: 2.5rem;
+          background-color: red;
+          border: none;
           font-size: 1rem;
           font-weight: 500;
-          width: 70%;
+          border-radius: 0.2rem;
+          margin-right: 1rem;
+          a {
+            text-decoration: none;
+            color: #fff;
+          }
+        }
+        a {
+          text-decoration: none;
           color: #796f6f;
-          border-left: 3px solid red;
-          padding-left: 10px;
-          margin: 1rem 0;
-          a {
-            text-decoration: none;
-            color: red;
-            font-weight: 600;
-          }
-        }
-        .wheel_mobile {
-          display: none;
-        }
-        .buttons {
-          display: flex;
-          width: 100%;
-          align-items: center;
-          margin: 2rem 0;
-          button {
-            width: 30%;
-            height: 2.5rem;
-            background-color: red;
-            border: none;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 0.2rem;
-            margin-right: 1rem;
-            a {
-              text-decoration: none;
-              color: #fff;
-            }
-          }
-          a {
-            text-decoration: none;
-            color: #796f6f;
-            font-weight: 500;
-            &:hover {
-              text-decoration: underline;
-            }
+          font-weight: 500;
+          &:hover {
+            text-decoration: underline;
           }
         }
       }
@@ -187,43 +182,43 @@
 
 @media screen and (max-width: 768px) {
   .fetiino {
-    .fetiino_inner {
-      .navbar {
-        height: 50px;
-        .navlinks {
-          display: none;
+    .navbar {
+      height: 50px;
+      .navlinks {
+        display: none;
+      }
+    }
+    .hero {
+      width: 85%;
+      .hero_text_content {
+        .main_text {
+          margin-top: 20px;
+          h1 {
+            font-size: 5rem;
+          }
+        }
+        .wheel_mobile {
+          display: flex;
+        }
+        .buttons {
+          flex-direction: column;
+          align-items: flex-start;
+          button {
+            width: 400px;
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          a {
+            font-size: 22px;
+          }
         }
       }
-      .hero {
-        .hero_text_content {
-          .main_text {
-            h1 {
-              font-size: 80px;
-            }
-          }
-          .wheel_mobile {
-            display: flex;
-          }
-          .buttons {
-            flex-direction: column;
-            align-items: flex-start;
-            button {
-              width: 80%;
-              height: 40px;
-              margin-bottom: 10px;
-              padding: 30px 0;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            }
-            a {
-              font-size: 22px;
-            }
-          }
-        }
-        .hero_color_wheel {
-          display: none;
-        }
+      .hero_color_wheel {
+        display: none;
       }
     }
   }

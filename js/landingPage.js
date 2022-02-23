@@ -26,7 +26,7 @@ const colorPicker = new iro.ColorPicker(".wheel", {
   slider: false,
 });
 const colorPickerMobile = new iro.ColorPicker(".wheel_mobile", {
-  width: 300,
+  width: 280,
   color: "#f00",
   slider: false,
 });

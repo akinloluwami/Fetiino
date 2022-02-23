@@ -5,23 +5,18 @@
   font-family: "Poppins";
 }
 
+html {
+  font-size: 16px;
+}
+
 .fetiino {
   font-family: "Poppins";
-  position: relative;
 }
 
-.fetiino .fetiino_inner {
-  width: 95%;
-  margin: auto;
-}
-
-.fetiino .fetiino_inner .navbar {
+.fetiino .navbar {
   width: 100%;
   height: 10vh;
-  background-color: transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
+  background-color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33,29 +28,29 @@
           justify-content: space-between;
 }
 
-.fetiino .fetiino_inner .navbar .logo {
+.fetiino .navbar .logo {
   margin-left: 2.5%;
 }
 
-.fetiino .fetiino_inner .navbar .navlinks {
+.fetiino .navbar .navlinks {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   list-style: none;
 }
 
-.fetiino .fetiino_inner .navbar .navlinks li {
+.fetiino .navbar .navlinks li {
   margin: 0 10px;
 }
 
-.fetiino .fetiino_inner .navbar .navlinks li a {
+.fetiino .navbar .navlinks li a {
   text-decoration: none;
   color: #796f6f;
   font-size: 0.9rem;
   font-weight: 500;
 }
 
-.fetiino .fetiino_inner .navbar .icons {
+.fetiino .navbar .icons {
   margin-right: 2.5%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -65,42 +60,41 @@
           align-items: center;
 }
 
-.fetiino .fetiino_inner .navbar .icons a {
+.fetiino .navbar .icons a {
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.fetiino .fetiino_inner .navbar .icons a i {
+.fetiino .navbar .icons a i {
   color: red;
   margin-right: 15px;
 }
 
-.fetiino .fetiino_inner .navbar .icons .color_bars {
+.fetiino .navbar .icons .color_bars {
   width: 40px;
   height: 40px;
 }
 
-.fetiino .fetiino_inner .navbar .icons .color_bars .color_bar {
+.fetiino .navbar .icons .color_bars .color_bar {
   width: 100%;
   height: 8px;
 }
 
-.fetiino .fetiino_inner .navbar .icons .color_bars .color_bar:first-child {
+.fetiino .navbar .icons .color_bars .color_bar:first-child {
   border-radius: 7px 7px 0 0;
 }
 
-.fetiino .fetiino_inner .navbar .icons .color_bars .color_bar:last-child {
+.fetiino .navbar .icons .color_bars .color_bar:last-child {
   border-radius: 0 0 7px 7px;
 }
 
-.fetiino .fetiino_inner .hero {
-  height: 100vh;
+.fetiino .hero {
+  height: 90vh;
   width: 85%;
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 2rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -109,7 +103,7 @@
           justify-content: space-between;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content .main_text {
+.fetiino .hero .hero_text_content .main_text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -125,7 +119,7 @@
           justify-content: center;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content .main_text h1 {
+.fetiino .hero .hero_text_content .main_text h1 {
   font-size: 6rem;
   font-weight: 600;
   color: #000;
@@ -133,11 +127,11 @@
   line-height: 1;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content .main_text h1:last-child {
+.fetiino .hero .hero_text_content .main_text h1:last-child {
   color: red;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content p {
+.fetiino .hero .hero_text_content p {
   font-size: 1rem;
   font-weight: 500;
   width: 70%;
@@ -147,17 +141,17 @@
   margin: 1rem 0;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content p a {
+.fetiino .hero .hero_text_content p a {
   text-decoration: none;
   color: red;
   font-weight: 600;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content .wheel_mobile {
+.fetiino .hero .hero_text_content .wheel_mobile {
   display: none;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content .buttons {
+.fetiino .hero .hero_text_content .buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -168,7 +162,7 @@
   margin: 2rem 0;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content .buttons button {
+.fetiino .hero .hero_text_content .buttons button {
   width: 30%;
   height: 2.5rem;
   background-color: red;
@@ -179,18 +173,18 @@
   margin-right: 1rem;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content .buttons button a {
+.fetiino .hero .hero_text_content .buttons button a {
   text-decoration: none;
   color: #fff;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content .buttons a {
+.fetiino .hero .hero_text_content .buttons a {
   text-decoration: none;
   color: #796f6f;
   font-weight: 500;
 }
 
-.fetiino .fetiino_inner .hero .hero_text_content .buttons a:hover {
+.fetiino .hero .hero_text_content .buttons a:hover {
   text-decoration: underline;
 }
 
@@ -271,21 +265,27 @@
 }
 
 @media screen and (max-width: 768px) {
-  .fetiino .fetiino_inner .navbar {
+  .fetiino .navbar {
     height: 50px;
   }
-  .fetiino .fetiino_inner .navbar .navlinks {
+  .fetiino .navbar .navlinks {
     display: none;
   }
-  .fetiino .fetiino_inner .hero .hero_text_content .main_text h1 {
-    font-size: 80px;
+  .fetiino .hero {
+    width: 85%;
   }
-  .fetiino .fetiino_inner .hero .hero_text_content .wheel_mobile {
+  .fetiino .hero .hero_text_content .main_text {
+    margin-top: 20px;
+  }
+  .fetiino .hero .hero_text_content .main_text h1 {
+    font-size: 5rem;
+  }
+  .fetiino .hero .hero_text_content .wheel_mobile {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-  .fetiino .fetiino_inner .hero .hero_text_content .buttons {
+  .fetiino .hero .hero_text_content .buttons {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -294,8 +294,8 @@
         -ms-flex-align: start;
             align-items: flex-start;
   }
-  .fetiino .fetiino_inner .hero .hero_text_content .buttons button {
-    width: 80%;
+  .fetiino .hero .hero_text_content .buttons button {
+    width: 400px;
     height: 40px;
     margin-bottom: 10px;
     padding: 30px 0;
@@ -309,10 +309,10 @@
         -ms-flex-pack: center;
             justify-content: center;
   }
-  .fetiino .fetiino_inner .hero .hero_text_content .buttons a {
+  .fetiino .hero .hero_text_content .buttons a {
     font-size: 22px;
   }
-  .fetiino .fetiino_inner .hero .hero_color_wheel {
+  .fetiino .hero .hero_color_wheel {
     display: none;
   }
 }
@@ -2774,6 +2774,13 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gradient_maker .main .css_result .topbar .toggle_switch input {
+  margin-right: 5px;
 }
 
 .gradient_maker .main .css_result .css_code {
@@ -2868,6 +2875,7 @@
           justify-content: space-between;
   width: 90%;
   margin: 0 auto;
+  margin-top: 10px;
 }
 
 .gradient_maker .main .top .random_btn {
@@ -2875,8 +2883,9 @@
   border: none;
   background-color: #fff;
   color: #000;
-  font-size: 0.8rem;
-  padding: 5px 10px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 7px;
 }
 
 .gradient_maker .main .settings {

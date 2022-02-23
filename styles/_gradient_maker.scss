@@ -159,6 +159,10 @@
         margin: auto;
         .toggle_switch {
           display: flex;
+          align-items: center;
+          input {
+            margin-right: 5px;
+          }
         }
       }
       .css_code {
@@ -225,13 +229,15 @@
       justify-content: space-between;
       width: 90%;
       margin: 0 auto;
+      margin-top: 10px;
       .random_btn {
         outline: none;
         border: none;
         background-color: #fff;
         color: #000;
-        font-size: 0.8rem;
-        padding: 5px 10px;
+        font-size: 1rem;
+        padding: 10px 20px;
+        border-radius: 7px;
       }
     }
     .settings {

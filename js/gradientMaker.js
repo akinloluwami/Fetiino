@@ -85,13 +85,15 @@ background: ${gradientString};
   }
 });
 
-copyCss.addEventListener("mouseover", () => {
-  copyCss.style.background = gradientString;
-});
+// copyCss.addEventListener("mouseover", () => {
+//   copyCss.style.background = gradientString;
+// });
 
-copyCss.addEventListener("mouseleave", () => {
-  copyCss.style.backgroundColor = "grey";
-});
+// copyCss.addEventListener("mouseleave", () => {
+//   copyCss.style.backgroundColor = "grey";
+// });
+
+copyCss.style.background = gradientString;
 
 copyCss.addEventListener("click", () => {
   cssCodeTextarea.select();
@@ -109,6 +111,7 @@ function changeGradient(colorOne, colorTwo, angle) {
 background: ${firstColorValue.value};
 background: ${gradientString};
 `;
+  copyCss.style.background = gradientString;
 }
 
 firstColorValue.addEventListener("input", (e) => {

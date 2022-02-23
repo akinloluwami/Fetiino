@@ -2,20 +2,32 @@ const savedColorPalettes = document.querySelector(".saved_color_palettes");
 const paletteDefaultContent = document.querySelector(
   ".palette_default_content"
 );
-//load saved color palettes
-let cssDownloadCode;
-let paletteName;
 
-(function loadSavedPalettes() {
-  const paletteData = JSON.parse(localStorage.getItem("palettes"));
-  if (paletteData === null) {
-    paletteDefaultContent.style.display = "flex";
-  } else {
-    paletteData.forEach((palette) => {
-      const { name, colors, cssCode } = palette;
-      cssDownloadCode = cssCode;
-      paletteName = name;
-      const singlePaletteData = `
+function downloadCss(css) {
+  const cssFile = new Blob([css], { type: "text/css" });
+  const cssUrl = URL.createObjectURL(cssFile);
+  const link = document.createElement("a");
+  link.href = cssUrl;
+  link.setAttribute(
+    "download",
+    `${paletteName.replace(/\s/g, "")}byFetiino.css`
+  );
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+let cssFile;
+
+const paletteData = JSON.parse(localStorage.getItem("palettes"));
+if (paletteData === null) {
+  paletteDefaultContent.style.display = "flex";
+} else {
+  paletteData.forEach((palette) => {
+    const { name, colors, cssCode } = palette;
+    cssFile = cssCode;
+    paletteName = name;
+    const singlePaletteData = `
         <div class="saved_palette_card">
               <h3>${name}</h3>
               <div class="colors">
@@ -38,39 +50,73 @@ let paletteName;
 
         </div>
         `;
+    savedColorPalettes.innerHTML += singlePaletteData;
+  });
+}
 
-      savedColorPalettes.innerHTML += singlePaletteData;
-    });
-    const optionsButton = document.querySelectorAll(".options_button");
-    optionsButton.forEach((button) => {
+const allSavedPalettes = document.querySelectorAll(".saved_palette_card");
+
+allSavedPalettes.forEach((savedPalette) => {
+  const optionsButton = savedPalette.querySelector(".options_button");
+  const optionsMenu = savedPalette.querySelector(".options_menu");
+  const cssButton = savedPalette.querySelector(".css");
+  const imageButton = savedPalette.querySelector(".image");
+  const deleteButton = savedPalette.querySelector(".delete");
+
+  optionsButton.addEventListener("click", () => {
+    optionsMenu.classList.toggle("show");
+  });
+
+  cssButton.addEventListener("click", () => {
+    downloadCss(cssFile);
+  });
+
+  imageButton.addEventListener("click", () => {
+    const css = savedPalette.querySelector(".css_code").textContent;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const image = new Image();
+    image.src = `https://placehold.it/500x500`;
+    image.onload = function () {
+      canvas.width = image.width;
+      canvas.height = image.height;
+      ctx.drawImage(image, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        data[i] = 255 - data[i];
+        data[i + 1] = 255 - data[i + 1];
+        data[i + 2] = 255 - data[i + 2];
+      }
+      ctx.putImageData(imageData, 0, 0);
+      const imageUrl = canvas.toDataURL();
+      const link = document.createElement("a");
+      link.href = imageUrl;
+      link.setAttribute("download", `${paletteName.replace(/\s/g, "")}.png`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+  });
+});
+
+// const optionsButton = document.querySelectorAll(".options_button");
+
+/*optionsButton.forEach((button) => {
       button.addEventListener("mouseover", (e) => {
         const optionsMenu = button.querySelector(".options_menu");
         optionsMenu.classList.add("show");
         const cssButton = optionsMenu.children[1];
         const imageButton = optionsMenu.children[2];
         const deleteButton = optionsMenu.children[3];
-        function downloadCss() {
-          const css = cssDownloadCode;
-          const cssFile = new Blob([css], { type: "text/css" });
-          const cssUrl = URL.createObjectURL(cssFile);
-          const link = document.createElement("a");
-          link.href = cssUrl;
-          link.setAttribute(
-            "download",
-            `${paletteName.replace(/\s/g, "")}byColorwify.css`
-          );
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
-        cssButton.addEventListener("click", downloadCss);
-      });
-      button.addEventListener("mouseout", (e) => {
+        cssButton.addEventListener("click", () => {
+          downloadCss(cssCode);
+        });
+      });*/
+/*button.addEventListener("mouseout", (e) => {
         setTimeout(() => {
           const optionsMenu = button.querySelector(".options_menu");
           optionsMenu.classList.remove("show");
         }, 5000);
       });
-    });
-  }
-})();
+    });*/
