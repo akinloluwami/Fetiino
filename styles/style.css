@@ -1429,6 +1429,75 @@ html {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  position: relative;
+}
+
+.saved_palettes .main .confirm_delete_popup {
+  position: absolute;
+  background-color: #fff;
+  width: 300px;
+  margin: auto;
+  z-index: 100000;
+  border-radius: 7px;
+  -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  top: 50%;
+  left: 50%;
+  padding: 30px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.saved_palettes .main .confirm_delete_popup.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.saved_palettes .main .confirm_delete_popup h3 {
+  font-weight: 500;
+  text-align: center;
+}
+
+.saved_palettes .main .confirm_delete_popup .buttons {
+  width: 80%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.saved_palettes .main .confirm_delete_popup .buttons button {
+  width: 150px;
+  height: 40px;
+  margin: 10px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.saved_palettes .main .confirm_delete_popup .buttons button:first-child {
+  background-color: #e1e1e4;
+  color: #000;
+}
+
+.saved_palettes .main .confirm_delete_popup .buttons button:last-child {
+  background-color: red;
+  color: #fff;
 }
 
 .saved_palettes .main .title_and_delete {
@@ -1486,8 +1555,38 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-grid-column-align: center;
-      justify-self: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.saved_palettes .main .palette_default_content a {
+  text-decoration: none;
+}
+
+.saved_palettes .main .palette_default_content a button {
+  margin-right: 30px;
+  background-color: red;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 45px;
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .saved_palettes .main .saved_color_palettes_container {

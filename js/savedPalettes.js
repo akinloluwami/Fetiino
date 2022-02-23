@@ -2,6 +2,23 @@ const savedColorPalettes = document.querySelector(".saved_color_palettes");
 const paletteDefaultContent = document.querySelector(
   ".palette_default_content"
 );
+const deleteAllButton = document.querySelector(".delete_all");
+const confirmDeletePopup = document.querySelector(".confirm_delete_popup");
+const cancelDeleteButton = document.querySelector(".cancel_delete");
+const confirmDeleteButton = document.querySelector(".confirm_delete");
+deleteAllButton.addEventListener("click", () => {
+  confirmDeletePopup.classList.add("show");
+});
+cancelDeleteButton.addEventListener("click", () => {
+  confirmDeletePopup.classList.remove("show");
+});
+confirmDeleteButton.addEventListener("click", () => {
+  savedColorPalettes.innerHTML = "";
+  paletteDefaultContent.classList.add("show");
+  confirmDeletePopup.classList.remove("show");
+  deleteAllButton.style.display = "none";
+  localStorage.clear();
+});
 
 function downloadCss(css) {
   const cssFile = new Blob([css], { type: "text/css" });
@@ -22,6 +39,7 @@ let cssFile;
 const paletteData = JSON.parse(localStorage.getItem("palettes"));
 if (paletteData === null) {
   paletteDefaultContent.style.display = "flex";
+  deleteAllButton.style.display = "none";
 } else {
   paletteData.forEach((palette) => {
     const { name, colors, cssCode } = palette;
