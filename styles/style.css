@@ -1655,6 +1655,16 @@ html {
   transition: ease 0.5s;
 }
 
+@media screen and (max-width: 768px) {
+  .saved_palettes .left_sidebar {
+    display: none;
+  }
+  .saved_palettes .main {
+    width: 100%;
+    margin: 0;
+  }
+}
+
 .generate {
   display: -webkit-box;
   display: -ms-flexbox;
