@@ -163,10 +163,29 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+const savedMessage = document.querySelector(".saved_message");
+const checkBox = document.querySelector("#checkbox");
+
+checkBox.addEventListener("change", (e) => {
+  if (e.target.checked === true) {
+    setTimeout(() => {
+      e.target.checked = false;
+    }, 1500);
+  }
+});
+
 function savePalette() {
   makeCSS();
-  const paletteName = prompt("Enter a name for your palette");
+  const paletteName =
+    randomAF(adjectives) + " " + randomAF(nouns).toLowerCase();
   if (paletteName) {
+    savedMessage.classList.add("show");
+    setTimeout(() => {
+      savedMessage.classList.remove("show");
+    }, 1500);
+    savedMessage.innerHTML = ` 
+    <i class="fa fa-heart"></i>
+    <p>Saved as "${paletteName}"</p>`;
     const paletteObj = {
       name: paletteName,
       colors: newArr,
@@ -181,6 +200,10 @@ function savePalette() {
 document.addEventListener("keydown", (e) => {
   if (e.key === "s" && e.ctrlKey) {
     savePalette();
+    checkBox.checked = true;
+    setTimeout(() => {
+      checkBox.checked = false;
+    }, 1500);
   }
 });
 savePaletteBtn.addEventListener("click", savePalette);

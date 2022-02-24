@@ -14,7 +14,7 @@ cancelDeleteButton.addEventListener("click", () => {
 });
 confirmDeleteButton.addEventListener("click", () => {
   savedColorPalettes.innerHTML = "";
-  paletteDefaultContent.classList.add("show");
+  paletteDefaultContent.style.display = "flex";
   confirmDeletePopup.classList.remove("show");
   deleteAllButton.style.display = "none";
   localStorage.clear();
