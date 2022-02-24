@@ -74,9 +74,16 @@ closeBtn.addEventListener("click", () => {
   cssResult.style.display = "none";
 });
 
-checkBox.addEventListener("change", () => {
-  if (this.checked) {
-    cssCodeTextarea.value = "dope";
+checkBox.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    cssCodeTextarea.value = `
+background: ${firstColorValue.value};
+background: -webkit-${gradientString};
+background: -moz-${gradientString};
+background: -o-${gradientString};
+background: -ms-${gradientString};
+background: ${gradientString};
+    `;
   } else {
     cssCodeTextarea.value = `
 background: ${firstColorValue.value};

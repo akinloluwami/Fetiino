@@ -58,6 +58,7 @@ exportAsCssButton.addEventListener("click", () => {
   embedHtml5.style.color = "#000";
 });
 exportAsImageButton.addEventListener("click", () => {
+  document.querySelector(".extract").style.overflow = "hidden";
   imageResult.style.display = "block";
   cssResult.style.display = "none";
   defaultPopUpRightContent.style.display = "none";
@@ -264,17 +265,41 @@ const loadFile = function (e) {
         colorHexValues[3],
         colorHexValues[4],
       ];
+      const savedMessage = document.querySelector(".saved_message");
       function savePalette() {
-        const paletteName = prompt("Enter a name for your palette");
-        if (paletteName) {
-          const paletteObj = {
-            name: paletteName,
-            colors: colorsArray,
-            cssCode: cssOutput,
-          };
-          const palette = JSON.parse(localStorage.getItem("palettes")) || [];
-          palette.push(paletteObj);
-          localStorage.setItem("palettes", JSON.stringify(palette));
+        const paletteName =
+          randomAF(adjectives) + " " + randomAF(nouns).toLowerCase();
+        const paletteObj = {
+          name: paletteName,
+          colors: colorsArray,
+          cssCode: cssOutput,
+        };
+        const savedPalettes =
+          JSON.parse(localStorage.getItem("palettes")) || [];
+        const duplicate = savedPalettes.find((palette) => {
+          if (palette.cssCode === paletteObj.cssCode) {
+            return true;
+          }
+        });
+        if (duplicate) {
+          savedMessage.innerHTML = `
+          <i class="fas fa-exclamation-triangle"></i>
+          <p>This palette has already been saved!</p>
+          `;
+          savedMessage.classList.add("show");
+          setTimeout(() => {
+            savedMessage.classList.remove("show");
+          }, 1500);
+        } else {
+          savedMessage.classList.add("show");
+          setTimeout(() => {
+            savedMessage.classList.remove("show");
+          }, 1500);
+          savedMessage.innerHTML = ` 
+          <i class="fa fa-heart"></i>
+          <p>Saved as "${paletteName}"</p>`;
+          savedPalettes.push(paletteObj);
+          localStorage.setItem("palettes", JSON.stringify(savedPalettes));
         }
       }
       savePaletteButton.addEventListener("click", savePalette);
@@ -412,7 +437,69 @@ const loadFile = function (e) {
         document.body.removeChild(element);
       });
       const svgImage = `
-        <svg id="svg-element-id" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1034.9">
+        <svg  data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1034.9">
+        <defs>
+    <style>
+      .cls-1, .cls-9 {
+        fill: #f6f6f6;
+      }
+
+      .cls-2 {
+        font-size: 67.82px;
+      }
+
+      .cls-2, .cls-9 {
+        font-family: Poppins-Medium, Poppins;
+        font-weight: 500;
+      }
+
+      .cls-3 {
+        fill: red;
+      }
+
+      .cls-4 {
+        fill: ${colorHexValues[0]};
+      }
+
+      .cls-5 {
+        fill: ${colorHexValues[1]};
+      }
+
+      .cls-6 {
+        fill: ${colorHexValues[2]};
+      }
+
+      .cls-7 {
+        fill: ${colorHexValues[4]};
+      }
+
+      .cls-8 {
+        fill: ${colorHexValues[3]};
+      }
+
+      .cls-9 {
+        font-size: 52.2px;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" y="924" width="1024" height="100"/>
+  <g>
+    <text class="cls-2" transform="translate(24.3 995.43)">Fetiino</text>
+  </g>
+  <rect class="cls-4" width="204.8" height="924"/>
+  <rect class="cls-5" x="204.8" width="204.8" height="924"/>
+  <rect class="cls-6" x="409.6" width="204.8" height="924"/>
+  <rect class="cls-7" x="819.2" width="204.8" height="924"/>
+  <rect class="cls-8" x="614.4" width="204.8" height="924"/>
+  <text class="cls-9" transform="translate(121.79 899.05) rotate(-90)">${colorNames[0]}</text>
+  <text class="cls-9" transform="translate(327.41 895.45) rotate(-90)">${colorNames[1]}</text>
+  <text class="cls-9" transform="translate(512 891.85) rotate(-90)">${colorNames[2]}</text>
+  <text class="cls-9" transform="translate(730.6 891.01) rotate(-90)">${colorNames[3]}</text>
+  <text class="cls-9" transform="translate(933.81 888.61) rotate(-90)">${colorNames[4]}</text>
+</svg>
+        `;
+      const svgImageDownloadable = `
+        <svg class="download_svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1034.9">
         <defs>
     <style>
       .cls-1, .cls-9 {
@@ -480,7 +567,16 @@ const loadFile = function (e) {
         <i class="fa fa-download"></i>
       </button>
     </div>
+    ${svgImageDownloadable}
       `;
+
+      const downloadButton = document.querySelector(".save_as button");
+
+      downloadButton.addEventListener("click", () => {
+        ReImg.fromSvg(document.querySelector("svg.download_svg")).downloadPng(
+          randomAF(adjectives) + "-" + randomAF(nouns).toLowerCase()
+        );
+      });
 
       function exportPalette() {
         popUp.classList.add("active");
