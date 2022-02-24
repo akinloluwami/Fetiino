@@ -137,15 +137,15 @@ function makeCSS() {
   newLastFive = lastFive;
 }
 function downloadCss() {
+  const fileName = `${randomAF(adjectives)}-${randomAF(nouns)
+    .replace(/\s/g, "-")
+    .toLowerCase()}.css`;
   const css = newCssCode;
   const cssFile = new Blob([css], { type: "text/css" });
   const cssUrl = URL.createObjectURL(cssFile);
   const link = document.createElement("a");
   link.href = cssUrl;
-  link.setAttribute(
-    "download",
-    `${newLastFive[0].replace(/\s/g, "")}byFetiino.css`
-  );
+  link.setAttribute("download", fileName);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -155,6 +155,7 @@ saveCSSButton.addEventListener("click", () => {
   makeCSS();
   downloadCss();
 });
+
 document.addEventListener("keydown", (e) => {
   e.preventDefault();
   if (e.key === "d" && e.ctrlKey) {
@@ -164,21 +165,32 @@ document.addEventListener("keydown", (e) => {
 });
 
 const savedMessage = document.querySelector(".saved_message");
-const checkBox = document.querySelector("#checkbox");
-
-checkBox.addEventListener("change", (e) => {
-  if (e.target.checked === true) {
-    setTimeout(() => {
-      e.target.checked = false;
-    }, 1500);
-  }
-});
 
 function savePalette() {
   makeCSS();
   const paletteName =
     randomAF(adjectives) + " " + randomAF(nouns).toLowerCase();
-  if (paletteName) {
+  const paletteObj = {
+    name: paletteName,
+    colors: newArr,
+    cssCode: newCssCode,
+  };
+  const savedPalettes = JSON.parse(localStorage.getItem("palettes")) || [];
+  const duplicate = savedPalettes.find((palette) => {
+    if (palette.cssCode === paletteObj.cssCode) {
+      return true;
+    }
+  });
+  if (duplicate) {
+    savedMessage.innerHTML = `
+    <i class="fas fa-exclamation-triangle"></i>
+    <p>This palette has already been saved!</p>
+    `;
+    savedMessage.classList.add("show");
+    setTimeout(() => {
+      savedMessage.classList.remove("show");
+    }, 1500);
+  } else {
     savedMessage.classList.add("show");
     setTimeout(() => {
       savedMessage.classList.remove("show");
@@ -186,17 +198,11 @@ function savePalette() {
     savedMessage.innerHTML = ` 
     <i class="fa fa-heart"></i>
     <p>Saved as "${paletteName}"</p>`;
-    const paletteObj = {
-      name: paletteName,
-      colors: newArr,
-      cssCode: newCssCode,
-    };
-
-    const savedPalettes = JSON.parse(localStorage.getItem("palettes")) || [];
     savedPalettes.push(paletteObj);
     localStorage.setItem("palettes", JSON.stringify(savedPalettes));
   }
 }
+
 document.addEventListener("keydown", (e) => {
   if (e.key === "s" && e.ctrlKey) {
     savePalette();
@@ -206,4 +212,14 @@ document.addEventListener("keydown", (e) => {
     }, 1500);
   }
 });
-savePaletteBtn.addEventListener("click", savePalette);
+
+const checkBox = document.querySelector("#checkbox");
+
+checkBox.addEventListener("change", (e) => {
+  if (e.target.checked === true) {
+    setTimeout(() => {
+      e.target.checked = false;
+    }, 1500);
+  }
+  savePalette();
+});

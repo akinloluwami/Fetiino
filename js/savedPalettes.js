@@ -36,16 +36,17 @@ function downloadCss(css) {
 
 let cssFile;
 
-const paletteData = JSON.parse(localStorage.getItem("palettes"));
-if (paletteData === null) {
-  paletteDefaultContent.style.display = "flex";
-  deleteAllButton.style.display = "none";
-} else {
-  paletteData.forEach((palette) => {
-    const { name, colors, cssCode } = palette;
-    cssFile = cssCode;
-    paletteName = name;
-    const singlePaletteData = `
+function loadSavedPalettes() {
+  const paletteData = JSON.parse(localStorage.getItem("palettes"));
+  if (paletteData === null) {
+    paletteDefaultContent.style.display = "flex";
+    deleteAllButton.style.display = "none";
+  } else {
+    paletteData.forEach((palette) => {
+      const { name, colors, cssCode } = palette;
+      cssFile = cssCode;
+      paletteName = name;
+      const singlePaletteData = `
         <div class="saved_palette_card">
               <h3>${name}</h3>
               <div class="colors">
@@ -68,9 +69,16 @@ if (paletteData === null) {
 
         </div>
         `;
-    savedColorPalettes.innerHTML += singlePaletteData;
-  });
+      savedColorPalettes.innerHTML += singlePaletteData;
+    });
+  }
 }
+loadSavedPalettes();
+
+setInterval(() => {
+  savedColorPalettes.innerHTML = "";
+  loadSavedPalettes();
+}, 1);
 
 const allSavedPalettes = document.querySelectorAll(".saved_palette_card");
 
