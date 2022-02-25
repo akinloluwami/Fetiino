@@ -6,6 +6,9 @@
   height: 100vh;
   position: relative;
   overflow-x: hidden;
+  .mobile_nav {
+    display: none;
+  }
   .popup {
     width: 50%;
     height: 60vh;
@@ -266,7 +269,7 @@
       .navlinks {
         list-style: none;
         li {
-          margin: 15px 0;
+          margin: 35px 0;
           small {
             sup {
               background-color: red;
@@ -291,7 +294,6 @@
     .coming_soon {
       background-color: #f6f9fe;
       width: 70%;
-      //   margin-bottom: 100px;
       height: 200px;
       border-radius: 20px;
       display: flex;
@@ -299,6 +301,7 @@
       justify-content: space-between;
       flex-direction: column;
       padding: 20px;
+      display: none;
       .emoji {
         background-color: rgba(255, 0, 0, 0.288);
         display: flex;
@@ -604,8 +607,56 @@
 
 //media queries
 @media screen and (max-width: 768px) {
-  .colorwify {
+  .extract {
     flex-direction: column;
+    .mobile_nav {
+      display: flex;
+      width: 100%;
+      height: fit-content;
+      background-color: #fff;
+      flex-direction: column;
+      .logo_menu {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+        padding: 10px 0;
+        .ham {
+          i {
+            font-size: 40px;
+            color: #000;
+          }
+        }
+      }
+      .links {
+        width: 90%;
+        margin: auto;
+        display: none;
+        &.show {
+          display: block;
+        }
+        .navlinks {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-start;
+          li {
+            margin: 15px;
+            a {
+              color: #000;
+              font-weight: 500;
+              font-size: 18px;
+              text-decoration: none;
+              i {
+                margin-right: 5px;
+                color: #f00;
+              }
+            }
+          }
+        }
+      }
+    }
     .popup {
       width: 90%;
       .popup_content {

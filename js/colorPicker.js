@@ -61,3 +61,10 @@ resultsCard.forEach((card) => {
     navigator.clipboard.writeText(colorCodeValue.value);
   });
 });
+
+const toggleMenu = document.querySelector(".ham");
+const menuLinks = document.querySelector(".links");
+
+toggleMenu.addEventListener("click", () => {
+  menuLinks.classList.toggle("show");
+});

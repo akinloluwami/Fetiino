@@ -126,6 +126,8 @@ function checkLuminance(hexCode) {
 }
 
 const loadFile = function (e) {
+  savePaletteButton.innerHTML = `<i class="fas fa-heart"></i> Save Palette`;
+  savePaletteButton.style.backgroundColor = "red";
   const uploadedImage = document.querySelector(".uploaded_image");
   const displayImage = URL.createObjectURL(e.target.files[0]);
   uploadedImage.src = displayImage;
@@ -267,6 +269,8 @@ const loadFile = function (e) {
       ];
       const savedMessage = document.querySelector(".saved_message");
       function savePalette() {
+        savePaletteButton.innerHTML = `<i class="fa fa-check"></i> Saved`;
+        savePaletteButton.style.backgroundColor = "#aaa";
         const paletteName =
           randomAF(adjectives) + " " + randomAF(nouns).toLowerCase();
         const paletteObj = {
@@ -616,4 +620,9 @@ function rgbToHex(r, g, b) {
 }
 /************************************************/
 
-//PWA
+const toggleMenu = document.querySelector(".ham");
+const menuLinks = document.querySelector(".links");
+
+toggleMenu.addEventListener("click", () => {
+  menuLinks.classList.toggle("show");
+});

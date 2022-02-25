@@ -38,3 +38,10 @@ function convert() {
 }
 
 colorCodeInput.addEventListener("input", convert);
+
+const toggleMenu = document.querySelector(".ham");
+const menuLinks = document.querySelector(".links");
+
+toggleMenu.addEventListener("click", () => {
+  menuLinks.classList.toggle("show");
+});

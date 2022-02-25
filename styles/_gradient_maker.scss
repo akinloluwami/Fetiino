@@ -5,6 +5,9 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  .mobile_nav {
+    display: none;
+  }
   .left_sidebar {
     width: 20%;
     background-color: #fff;
@@ -30,7 +33,7 @@
       .navlinks {
         list-style: none;
         li {
-          margin: 15px 0;
+          margin: 35px 0;
           small {
             sup {
               background-color: red;
@@ -55,14 +58,13 @@
     .coming_soon {
       background-color: #f6f9fe;
       width: 70%;
-      //   margin-bottom: 100px;
-      height: 200px;
       border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-direction: column;
       padding: 20px;
+      display: none;
       .emoji {
         background-color: rgba(255, 0, 0, 0.288);
         display: flex;
@@ -81,7 +83,8 @@
         text-align: center;
       }
       button {
-        width: 80%;
+        // padding: 10px;
+        width: 90%;
         height: 2rem;
         border: none;
         cursor: pointer;
@@ -121,7 +124,7 @@
     .css_result {
       color: #000;
       width: 500px;
-      height: 300px;
+      height: 350px;
       position: absolute;
       top: 40%;
       left: 50%;
@@ -174,7 +177,7 @@
         flex-direction: column;
         textarea {
           width: 90%;
-          height: 150px;
+          height: 200px;
           margin: auto;
           padding: 10px;
           outline: none;
@@ -301,100 +304,14 @@
         height: 100px;
         margin-top: 30px;
       }
-      input[type="range"] {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        width: 100%;
-        outline: none;
-        position: absolute;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        background-color: transparent;
-        pointer-events: none;
-      }
-      .slider-track {
-        width: 100%;
-        height: 5px;
-        position: absolute;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        border-radius: 5px;
-      }
-      input[type="range"]::-webkit-slider-runnable-track {
-        -webkit-appearance: none;
-        height: 5px;
-      }
-      input[type="range"]::-moz-range-track {
-        -moz-appearance: none;
-        height: 5px;
-      }
-      input[type="range"]::-ms-track {
-        appearance: none;
-        height: 5px;
-      }
-      input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        height: 1.7em;
-        width: 1.7em;
-        background-color: red;
-        cursor: pointer;
-        margin-top: -9px;
-        pointer-events: auto;
-        border-radius: 50%;
-      }
-      input[type="range"]::-moz-range-thumb {
-        -webkit-appearance: none;
-        height: 1.7em;
-        width: 1.7em;
-        cursor: pointer;
-        border-radius: 50%;
-        background-color: red;
-        pointer-events: auto;
-      }
-      input[type="range"]::-ms-thumb {
-        appearance: none;
-        height: 1.7em;
-        width: 1.7em;
-        cursor: pointer;
-        border-radius: 50%;
-        background-color: red;
-        pointer-events: auto;
-      }
-      input[type="range"]:active::-webkit-slider-thumb {
-        background-color: #ffffff;
-        border: 3px solid red;
-      }
-      .values {
-        background-color: red;
-        width: 32%;
-        position: relative;
-        margin: auto;
-        padding: 10px 0;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: 500;
-        font-size: 25px;
-      }
-      .values:before {
-        content: "";
-        position: absolute;
-        height: 0;
-        width: 0;
-        border-top: 15px solid red;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        margin: auto;
-        bottom: -14px;
-        left: 0;
-        right: 0;
-      }
       .angle {
+        .mobile_angle_container {
+          display: none;
+        }
         .angle_container {
           display: flex;
           align-items: center;
+
           input {
             width: 50px;
             height: 40px;
@@ -426,6 +343,91 @@
                 border-radius: 100%;
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .gradient_maker {
+    flex-direction: column;
+    .mobile_nav {
+      display: flex;
+      width: 100%;
+      height: fit-content;
+      background-color: #fff;
+      flex-direction: column;
+      .logo_menu {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+        padding: 10px 0;
+        .ham {
+          i {
+            font-size: 40px;
+            color: #000;
+          }
+        }
+      }
+      .links {
+        width: 90%;
+        margin: auto;
+        display: none;
+        &.show {
+          display: block;
+        }
+        .navlinks {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-start;
+          li {
+            margin: 15px;
+            a {
+              color: #000;
+              font-weight: 500;
+              font-size: 18px;
+              text-decoration: none;
+              i {
+                margin-right: 5px;
+                color: #f00;
+              }
+            }
+          }
+        }
+      }
+    }
+    .left_sidebar {
+      display: none;
+    }
+    .main {
+      width: 100%;
+      .settings {
+        flex-direction: column;
+        height: fit-content;
+        padding: 20px 10px;
+        .angle {
+          .mobile_angle_container {
+            display: flex;
+            input {
+              width: 50px;
+              height: 40px;
+              text-align: center;
+              border: none;
+              outline: none;
+              padding: 5px;
+              border-radius: 6px;
+              margin-right: 10px;
+            }
+            .mobile_angle_slider {
+              width: 300px;
+            }
+          }
+          .angle_container {
+            display: none;
           }
         }
       }

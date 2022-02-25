@@ -18,6 +18,8 @@ const copyCss = document.querySelector(".copy_css");
 const cssResult = document.querySelector(".css_result");
 const css3Btn = document.querySelector(".css3_btn");
 const closeBtn = document.querySelector(".close");
+const mobileAngleSlider = document.querySelector(".mobile_angle_slider");
+const mobileSliderValue = document.querySelector(".mobile_slider_value");
 firstColorValue.value = randomColor({});
 secondColorValue.value = randomColor({});
 firstColorBox.style.backgroundColor = firstColorValue.value;
@@ -80,8 +82,6 @@ checkBox.addEventListener("change", (e) => {
 background: ${firstColorValue.value};
 background: -webkit-${gradientString};
 background: -moz-${gradientString};
-background: -o-${gradientString};
-background: -ms-${gradientString};
 background: ${gradientString};
     `;
   } else {
@@ -91,14 +91,6 @@ background: ${gradientString};
     `;
   }
 });
-
-// copyCss.addEventListener("mouseover", () => {
-//   copyCss.style.background = gradientString;
-// });
-
-// copyCss.addEventListener("mouseleave", () => {
-//   copyCss.style.backgroundColor = "grey";
-// });
 
 copyCss.style.background = gradientString;
 
@@ -151,6 +143,7 @@ function randomGradient() {
   changeGradient(firstColorValue.value, secondColorValue.value, randomAngle);
 
   angleValue.value = randomAngle;
+  mobileSliderValue.value = randomAngle;
 }
 
 function radialGradient(colorOne, num1, colorTwo, num2) {
@@ -185,69 +178,23 @@ linearBtn.addEventListener("click", () => {
   angleCircle.style.pointerEvents = "auto";
 });
 
-// radialBtn.addEventListener("click", () => {
-//   // angleDiv.style.display = "none";
-//   radialGradient(
-//     firstColorValue.value,
-//     sliderOne.value,
-//     secondColorValue.value,
-//     sliderTwo.value
-//   );
-//   radialBtn.style.color = "#fff";
-//   radialBtn.style.backgroundColor = "red";
-//   linearBtn.style.color = "red";
-//   linearBtn.style.backgroundColor = "#fff";
-// });
-
 tippy(radialBtn, {
   content: "Coming Soon",
   hideOnClick: false,
 });
 
-window.onload = function () {
-  slideOne();
-  slideTwo();
-};
+mobileSliderValue.value = angleValue.value;
 
-let sliderOne = document.getElementById("slider-1");
-let sliderTwo = document.getElementById("slider-2");
-let displayValOne = document.getElementById("range1");
-let displayValTwo = document.getElementById("range2");
-let minGap = 0;
-let sliderTrack = document.querySelector(".slider-track");
-let sliderMaxValue = document.getElementById("slider-1").max;
+mobileAngleSlider.addEventListener("input", (e) => {
+  angleValue.value = e.target.value;
+  angleCircle.style.transform = `rotate(${e.target.value}deg)`;
+  changeGradient(firstColorValue.value, secondColorValue.value, e.target.value);
+  mobileSliderValue.value = e.target.value;
+});
 
-function slideOne() {
-  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
-    sliderOne.value = parseInt(sliderTwo.value) - minGap;
-  }
-  displayValOne.textContent = sliderOne.value;
-  fillColor();
-  radialGradient(
-    firstColorValue.value,
-    sliderOne.value,
-    secondColorValue.value,
-    sliderTwo.value
-  );
-}
-function slideTwo() {
-  if (parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap) {
-    sliderTwo.value = parseInt(sliderOne.value) + minGap;
-  }
-  displayValTwo.textContent = sliderTwo.value;
-  fillColor();
-  radialGradient(
-    firstColorValue.value,
-    sliderOne.value,
-    secondColorValue.value,
-    sliderTwo.value
-  );
-}
-function fillColor() {
-  percent1 = (sliderOne.value / sliderMaxValue) * 100;
-  percent2 = (sliderTwo.value / sliderMaxValue) * 100;
-  sliderTrack.style.background = "#fff";
-}
+const toggleMenu = document.querySelector(".ham");
+const menuLinks = document.querySelector(".links");
 
-sliderOne.addEventListener("input", slideOne);
-sliderTwo.addEventListener("input", slideTwo);
+toggleMenu.addEventListener("click", () => {
+  menuLinks.classList.toggle("show");
+});

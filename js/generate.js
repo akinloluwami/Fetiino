@@ -223,3 +223,10 @@ checkBox.addEventListener("change", (e) => {
   }
   savePalette();
 });
+
+const toggleMenu = document.querySelector(".ham");
+const menuLinks = document.querySelector(".links");
+
+toggleMenu.addEventListener("click", () => {
+  menuLinks.classList.toggle("show");
+});

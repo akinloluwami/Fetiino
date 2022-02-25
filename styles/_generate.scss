@@ -5,6 +5,9 @@
   width: 100%;
   height: fit-content;
   position: relative;
+  .mobile_nav {
+    display: none;
+  }
   .left_sidebar {
     width: 20%;
     background-color: #fff;
@@ -30,7 +33,7 @@
       .navlinks {
         list-style: none;
         li {
-          margin: 20px 0;
+          margin: 35px 0;
           small {
             sup {
               background-color: red;
@@ -62,7 +65,7 @@
       justify-content: space-between;
       flex-direction: column;
       padding: 10px;
-      // display: none;
+      display: none;
       .emoji {
         background-color: rgba(255, 0, 0, 0.288);
         display: flex;
@@ -240,6 +243,55 @@
 }
 @media screen and (max-width: 768px) {
   .generate {
+    flex-direction: column;
+    .mobile_nav {
+      display: flex;
+      width: 100%;
+      height: fit-content;
+      background-color: #fff;
+      flex-direction: column;
+      .logo_menu {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: auto;
+        padding: 10px 0;
+        .ham {
+          i {
+            font-size: 40px;
+            color: #000;
+          }
+        }
+      }
+      .links {
+        width: 90%;
+        margin: auto;
+        display: none;
+        &.show {
+          display: block;
+        }
+        .navlinks {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: flex-start;
+          li {
+            margin: 15px;
+            a {
+              color: #000;
+              font-weight: 500;
+              font-size: 18px;
+              text-decoration: none;
+              i {
+                margin-right: 5px;
+                color: #f00;
+              }
+            }
+          }
+        }
+      }
+    }
     .left_sidebar {
       display: none;
     }

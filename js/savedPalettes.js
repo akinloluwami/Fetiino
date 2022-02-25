@@ -126,23 +126,9 @@ allSavedPalettes.forEach((savedPalette) => {
   });
 });
 
-// const optionsButton = document.querySelectorAll(".options_button");
+const toggleMenu = document.querySelector(".ham");
+const menuLinks = document.querySelector(".links");
 
-/*optionsButton.forEach((button) => {
-      button.addEventListener("mouseover", (e) => {
-        const optionsMenu = button.querySelector(".options_menu");
-        optionsMenu.classList.add("show");
-        const cssButton = optionsMenu.children[1];
-        const imageButton = optionsMenu.children[2];
-        const deleteButton = optionsMenu.children[3];
-        cssButton.addEventListener("click", () => {
-          downloadCss(cssCode);
-        });
-      });*/
-/*button.addEventListener("mouseout", (e) => {
-        setTimeout(() => {
-          const optionsMenu = button.querySelector(".options_menu");
-          optionsMenu.classList.remove("show");
-        }, 5000);
-      });
-    });*/
+toggleMenu.addEventListener("click", () => {
+  menuLinks.classList.toggle("show");
+});
