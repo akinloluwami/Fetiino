@@ -1,4 +1,4 @@
-/*Simple Library to generate random words from parts of speech by @bossoncode*/
+/*Simple library that returns random string of English words by @bossoncode*/
 
 const adjectives = [
   "beautiful",

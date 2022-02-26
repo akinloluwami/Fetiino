@@ -1,3 +1,22 @@
+function hexToRgb(hex) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return { r, g, b };
+}
+
+let check = "";
+function checkLuminance(hexCode) {
+  const rgb = hexToRgb(hexCode);
+  const luminance = 0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b;
+  check = luminance;
+  if (luminance < 100) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 const savedColorPalettes = document.querySelector(".saved_color_palettes");
 const paletteDefaultContent = document.querySelector(
   ".palette_default_content"
@@ -20,15 +39,12 @@ confirmDeleteButton.addEventListener("click", () => {
   localStorage.clear();
 });
 
-function downloadCss(css) {
+function downloadCss(css, filename) {
   const cssFile = new Blob([css], { type: "text/css" });
   const cssUrl = URL.createObjectURL(cssFile);
   const link = document.createElement("a");
   link.href = cssUrl;
-  link.setAttribute(
-    "download",
-    `${paletteName.replace(/\s/g, "")}byFetiino.css`
-  );
+  link.setAttribute("download", `${filename}.css`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -50,79 +66,91 @@ function loadSavedPalettes() {
         <div class="saved_palette_card">
               <h3>${name}</h3>
               <div class="colors">
-                <div class="color" style="background-color:${colors[0]}"></div>
-                <div class="color" style="background-color:${colors[1]}"></div>
-                <div class="color" style="background-color:${colors[2]}"></div>
-                <div class="color" style="background-color:${colors[3]}"></div>
-                <div class="color" style="background-color:${colors[4]}"></div>
+                <div class="color" style="background-color:${colors[0]}">
+                <textarea class="color_code" readonly>${colors[0]}</textarea>
+                </div>
+                <div class="color" style="background-color:${colors[1]}">
+                <textarea class="color_code" readonly>${colors[1]}</textarea>
+                </div>
+                <div class="color" style="background-color:${colors[2]}">
+                <textarea class="color_code" readonly>${colors[2]}</textarea>
+                </div>
+                <div class="color" style="background-color:${colors[3]}">
+                <textarea class="color_code" readonly>${colors[3]}</textarea>
+                </div>
+                <div class="color" style="background-color:${colors[4]}">
+                <textarea class="color_code" readonly>${colors[4]}</textarea>
+                </div>
               </div>
-              
-            <div class="options_button">
-              <div class="options_menu">
-              <div class="arrow"></div>
-                <button class="css"><i class="fab fa-css3-alt"></i></button>
-                <button class="image"><i class="fa fa-image"></i></button>
-                <button class="delete"><i class="fa fa-trash"></i></button>
-              </div>
-              <i class="fa fa-ellipsis-h"></i>
-            </div>
+              <textarea class="css_code" readonly>${cssCode}</textarea>
+            <div class="download_button">
+              <i class="fa fa-download"></i>
+            </!div>
 
         </div>
         `;
       savedColorPalettes.innerHTML += singlePaletteData;
+
+      const cssFileCode = document.querySelectorAll(".css_code");
+      cssFileCode.forEach((code) => {
+        code.style.opacity = "0";
+        code.style.pointerEvents = "none";
+        code.style.resize = "none";
+      });
+
+      const textarea = document.querySelectorAll(".color_code");
+      textarea.forEach((textarea) => {
+        if (checkLuminance(textarea.value) === true) {
+          textarea.style.color = "#fff";
+        } else {
+          textarea.style.color = "#000";
+        }
+      });
     });
   }
 }
 loadSavedPalettes();
 
-setInterval(() => {
-  savedColorPalettes.innerHTML = "";
-  loadSavedPalettes();
-}, 1);
+const allColors = document.querySelectorAll(".color");
 
-const allSavedPalettes = document.querySelectorAll(".saved_palette_card");
+allColors.forEach((color) => {
+  const colorCode = color.children[0].value;
+  const copiedMessage = document.createElement("small");
+  copiedMessage.textContent = "Copied!";
+  color.appendChild(copiedMessage);
+  color.appendChild(color.children[0]);
+  if (checkLuminance(colorCode) === true) {
+    color.children[0].style.color = "#fff";
+  } else {
+    color.children[0].style.color = "#000";
+  }
+  copiedMessage.style.opacity = 0;
 
-allSavedPalettes.forEach((savedPalette) => {
-  const optionsButton = savedPalette.querySelector(".options_button");
-  const optionsMenu = savedPalette.querySelector(".options_menu");
-  const cssButton = savedPalette.querySelector(".css");
-  const imageButton = savedPalette.querySelector(".image");
-  const deleteButton = savedPalette.querySelector(".delete");
-
-  optionsButton.addEventListener("click", () => {
-    optionsMenu.classList.toggle("show");
+  color.addEventListener("click", () => {
+    setTimeout(() => {
+      copiedMessage.style.opacity = 1;
+      setTimeout(() => {
+        copiedMessage.style.opacity = 0;
+      }, 1000);
+    }, 100);
+    const textarea = document.createElement("textarea");
+    textarea.value = colorCode;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
   });
+});
 
-  cssButton.addEventListener("click", () => {
-    downloadCss(cssFile);
-  });
+const allDownloadButtons = document.querySelectorAll(".download_button");
 
-  imageButton.addEventListener("click", () => {
-    const css = savedPalette.querySelector(".css_code").textContent;
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    const image = new Image();
-    image.src = `https://placehold.it/500x500`;
-    image.onload = function () {
-      canvas.width = image.width;
-      canvas.height = image.height;
-      ctx.drawImage(image, 0, 0);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
-      for (let i = 0; i < data.length; i += 4) {
-        data[i] = 255 - data[i];
-        data[i + 1] = 255 - data[i + 1];
-        data[i + 2] = 255 - data[i + 2];
-      }
-      ctx.putImageData(imageData, 0, 0);
-      const imageUrl = canvas.toDataURL();
-      const link = document.createElement("a");
-      link.href = imageUrl;
-      link.setAttribute("download", `${paletteName.replace(/\s/g, "")}.png`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    };
+allDownloadButtons.forEach((downloadButton) => {
+  downloadButton.addEventListener("click", () => {
+    const downloadFile = downloadButton.parentElement.children[2].value;
+    const filename =
+      downloadButton.parentElement.children[0].textContent.replace(/\s/g, "-");
+    console.log(filename);
+    downloadCss(downloadFile, filename);
   });
 });
 
