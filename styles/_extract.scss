@@ -341,7 +341,7 @@
           color: #fff;
           padding: 2px;
           border-radius: 10px;
-          font-size: 0.5rem;
+          font-size: 0.7rem;
         }
       }
     }
@@ -360,6 +360,7 @@
       font-size: 2rem;
       text-align: left;
       width: 90%;
+      text-align: center;
     }
     .upload_btn_wrapper {
       position: relative;
@@ -605,6 +606,14 @@
   }
 }
 
+@media screen and (max-width: 950px){
+  .extract{
+    .left_sidebar{
+      width: 27%;
+    }
+  }
+}
+
 //media queries
 @media screen and (max-width: 768px) {
   .extract {
@@ -673,7 +682,7 @@
     }
     .main {
       width: 100%;
-      position: sticky;
+      //position: sticky;
       top: 0;
     }
     .right_sidebar {
