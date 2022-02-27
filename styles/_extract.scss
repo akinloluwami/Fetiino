@@ -751,7 +751,7 @@
     .popup {
       width: 90%;
       .popup_content {
-        flex-direction: column-reverse;
+        flex-direction: row;
         .popup_content_left,
         .popup_content_right {
           width: 100%;
