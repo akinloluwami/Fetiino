@@ -786,3 +786,32 @@
     }
   }
 }
+
+@media screen and (max-width: 590px){
+  .extract{
+    .popup{
+      .popup_content{
+        .popup_content_right{
+          display: none;
+        }
+        .popup_content_left{
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          ul{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            li{
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
