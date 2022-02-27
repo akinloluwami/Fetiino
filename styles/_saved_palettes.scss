@@ -370,6 +370,21 @@
   }
 }
 
+@media screen and (max-width: 1090px){
+  .saved_palettes{
+    .left_sidebar{
+      .contribute{
+        a{
+          font-size: 1rem;
+          sup{
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .saved_palettes {
     flex-direction: column;
