@@ -2051,6 +2051,18 @@ html {
     width: 100%;
     margin: 0;
   }
+  .saved_palettes .main .title_and_delete {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .saved_palettes .main .title_and_delete h2 {
+    margin: 0;
+  }
 }
 
 .generate {
