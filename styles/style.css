@@ -1961,6 +1961,18 @@ html {
   }
 }
 
+@media screen and (max-width: 950px) {
+  .saved_palettes .left_sidebar {
+    width: 25%;
+  }
+  .saved_palettes .main .title_and_delete {
+    background-color: transparent;
+  }
+  .saved_palettes .main .title_and_delete h2 {
+    margin-left: 180px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .saved_palettes {
     -webkit-box-orient: vertical;
