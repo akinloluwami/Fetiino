@@ -458,6 +458,14 @@
     .main {
       width: 100%;
       margin: 0;
+      .title_and_delete{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        h2{
+          margin: 0;
+        }
+      }
     }
   }
 }
