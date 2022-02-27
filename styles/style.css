@@ -800,7 +800,7 @@ html {
   color: #fff;
   padding: 2px;
   border-radius: 10px;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 
 .extract .main {
@@ -828,6 +828,7 @@ html {
   font-size: 2rem;
   text-align: left;
   width: 90%;
+  text-align: center;
 }
 
 .extract .main .upload_btn_wrapper {
@@ -1191,6 +1192,12 @@ html {
   margin: 10px 0;
 }
 
+@media screen and (max-width: 950px) {
+  .extract .left_sidebar {
+    width: 27%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .extract {
     -webkit-box-orient: vertical;
@@ -1281,8 +1288,6 @@ html {
   }
   .extract .main {
     width: 100%;
-    position: -webkit-sticky;
-    position: sticky;
     top: 0;
   }
   .extract .right_sidebar {
