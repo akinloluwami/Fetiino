@@ -267,6 +267,7 @@ html {
 @media screen and (max-width: 821px) {
   .fetiino .navbar {
     height: 50px;
+    width: 100%;
   }
   .fetiino .navbar .navlinks {
     display: none;
