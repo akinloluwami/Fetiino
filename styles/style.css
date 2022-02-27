@@ -1377,10 +1377,10 @@ html {
     width: 90%;
   }
   .extract .popup .popup_content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
   .extract .popup .popup_content .popup_content_left,
   .extract .popup .popup_content .popup_content_right {
