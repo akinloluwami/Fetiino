@@ -264,9 +264,10 @@ html {
   border-radius: 50px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 821px) {
   .fetiino .navbar {
     height: 50px;
+    width: 100%;
   }
   .fetiino .navbar .navlinks {
     display: none;
@@ -799,7 +800,7 @@ html {
   color: #fff;
   padding: 2px;
   border-radius: 10px;
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 
 .extract .main {
@@ -827,6 +828,7 @@ html {
   font-size: 2rem;
   text-align: left;
   width: 90%;
+  text-align: center;
 }
 
 .extract .main .upload_btn_wrapper {
@@ -1190,6 +1192,12 @@ html {
   margin: 10px 0;
 }
 
+@media screen and (max-width: 950px) {
+  .extract .left_sidebar {
+    width: 27%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .extract {
     -webkit-box-orient: vertical;
@@ -1280,8 +1288,6 @@ html {
   }
   .extract .main {
     width: 100%;
-    position: -webkit-sticky;
-    position: sticky;
     top: 0;
   }
   .extract .right_sidebar {
@@ -1314,10 +1320,12 @@ html {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
     overflow-x: auto;
     position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-top: 15px;
   }
   .extract .right_sidebar .image_loaded .color_palette h3 {
@@ -1334,7 +1342,6 @@ html {
             flex: 0 0 auto;
     width: 100px;
     height: 100px;
-    border-radius: 100%;
     margin: 10px;
     display: inline-block;
     display: -webkit-box;
@@ -1371,10 +1378,10 @@ html {
     width: 90%;
   }
   .extract .popup .popup_content {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
   .extract .popup .popup_content .popup_content_left,
   .extract .popup .popup_content .popup_content_right {
@@ -1396,6 +1403,53 @@ html {
   }
   .extract .right_sidebar .image_loaded .color_palette .color_palette_container .color {
     height: 90px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .extract .popup .popup_content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .extract .popup .popup_content .popup_content_right {
+    display: none;
+  }
+  .extract .popup .popup_content .popup_content_left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .extract .popup .popup_content .popup_content_left ul {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 20px;
+  }
+  .extract .popup .popup_content .popup_content_left ul li {
+    margin-top: 10px;
   }
 }
 
@@ -1951,6 +2005,27 @@ html {
   transition: ease 0.5s;
 }
 
+@media screen and (max-width: 1090px) {
+  .saved_palettes .left_sidebar .contribute a {
+    font-size: 1rem;
+  }
+  .saved_palettes .left_sidebar .contribute a sup {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .saved_palettes .left_sidebar {
+    width: 25%;
+  }
+  .saved_palettes .main .title_and_delete {
+    background-color: transparent;
+  }
+  .saved_palettes .main .title_and_delete h2 {
+    margin-left: 180px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .saved_palettes {
     -webkit-box-orient: vertical;
@@ -2027,6 +2102,18 @@ html {
   }
   .saved_palettes .main {
     width: 100%;
+    margin: 0;
+  }
+  .saved_palettes .main .title_and_delete {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .saved_palettes .main .title_and_delete h2 {
     margin: 0;
   }
 }

@@ -180,10 +180,11 @@ html {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 821px) {
   .fetiino {
     .navbar {
       height: 50px;
+      width: 100%;
       .navlinks {
         display: none;
       }
