@@ -1407,6 +1407,12 @@ html {
 }
 
 @media screen and (max-width: 590px) {
+  .extract .popup .popup_content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
   .extract .popup .popup_content .popup_content_right {
     display: none;
   }
