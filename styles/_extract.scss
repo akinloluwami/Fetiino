@@ -792,6 +792,7 @@
   .extract{
     .popup{
       .popup_content{
+        flex-direction: column;
         .popup_content_right{
           display: none;
         }
