@@ -210,9 +210,10 @@
               width: 2048px;
               height: 2048px;
               position: absolute;
+              display: none;
               top: 0;
               left: 0;
-              z-index: -1000000000000000000;
+              z-index: -10;
               opacity: 0;
             }
           }
@@ -764,6 +765,8 @@
         .dominant_color {
           .dominant {
             height: 90px;
+            width: 100%;
+            border-radius: none;
           }
         }
         .color_palette {

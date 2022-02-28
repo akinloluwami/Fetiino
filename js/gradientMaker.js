@@ -20,6 +20,7 @@ const css3Btn = document.querySelector(".css3_btn");
 const closeBtn = document.querySelector(".close");
 const mobileAngleSlider = document.querySelector(".mobile_angle_slider");
 const mobileSliderValue = document.querySelector(".mobile_slider_value");
+const typeDiv = (document.querySelector(".type").style.display = "none");
 firstColorValue.value = randomColor({});
 secondColorValue.value = randomColor({});
 firstColorBox.style.backgroundColor = firstColorValue.value;

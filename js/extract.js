@@ -58,7 +58,7 @@ exportAsCssButton.addEventListener("click", () => {
   embedHtml5.style.color = "#000";
 });
 exportAsImageButton.addEventListener("click", () => {
-  document.querySelector(".extract").style.overflow = "hidden";
+  document.querySelector(".extract").style.overflowX = "hidden";
   imageResult.style.display = "block";
   cssResult.style.display = "none";
   defaultPopUpRightContent.style.display = "none";
