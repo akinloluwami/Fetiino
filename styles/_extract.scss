@@ -709,9 +709,10 @@
         }
         .color_palette {
           display: flex;
-          flex-wrap: nowrap;
+          //flex-wrap: nowrap;
           overflow-x: auto;
           position: relative;
+          flex-direction: column;
           margin-top: 15px;
           h3 {
             position: sticky;
